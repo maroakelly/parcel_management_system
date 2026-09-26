@@ -7,6 +7,121 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model User {
+  id              Int            @id @default(autoincrement())
+  name            String
+  email           String         @unique
+  password        String
+  phone           String?
+  role            Role           @default(CUSTOMER)
+  status          UserStatus     @default(ACTIVE)
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+  auditLogs       AuditLog[]
+  driver          Driver?
+  notifications   Notification[]
+  customerParcels Parcel[]       @relation("CustomerParcels")
+  payments        Payment[]      @relation("UserPayments")
+}
+
+model Driver {
+  id            Int      @id @default(autoincrement())
+  userId        Int      @unique
+  licenseNumber String   @unique
+  vehicleNumber String   @unique
+  vehicleType   String
+  availability  Boolean  @default(true)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  parcels       Parcel[] @relation("DriverParcels")
+}
+
+model Parcel {
+  id              Int                   @id @default(autoincrement())
+  trackingNumber  String                @unique
+  customerId      Int
+  driverId        Int?
+  senderName      String
+  senderPhone     String
+  receiverName    String
+  receiverPhone   String
+  pickupAddress   String
+  deliveryAddress String
+  parcelType      String
+  weight          Float
+  deliveryType    DeliveryType
+  price           Float
+  status          ParcelStatus          @default(PENDING)
+  createdAt       DateTime              @default(now())
+  updatedAt       DateTime              @updatedAt
+  notifications   Notification[]
+  customer        User                  @relation("CustomerParcels", fields: [customerId], references: [id], onDelete: Cascade)
+  driver          Driver?               @relation("DriverParcels", fields: [driverId], references: [id])
+  statusHistory   ParcelStatusHistory[]
+  payments        Payment[]
+}
+
+model ParcelStatusHistory {
+  id        Int          @id @default(autoincrement())
+  parcelId  Int
+  status    ParcelStatus
+  notes     String?
+  createdAt DateTime     @default(now())
+  parcel    Parcel       @relation(fields: [parcelId], references: [id], onDelete: Cascade)
+}
+
+model Payment {
+  id                 Int           @id @default(autoincrement())
+  parcelId           Int
+  userId             Int?
+  amount             Float
+  method             PaymentMethod @default(CASH_ON_DELIVERY)
+  status             PaymentStatus @default(PENDING)
+  transactionId      String?
+  phoneNumber        String?
+  mpesaReceiptNumber String?
+  failureReason      String?
+  createdAt          DateTime      @default(now())
+  updatedAt          DateTime      @updatedAt
+  parcel             Parcel        @relation(fields: [parcelId], references: [id], onDelete: Cascade)
+  user               User?         @relation("UserPayments", fields: [userId], references: [id])
+
+  @@index([parcelId])
+  @@index([userId])
+  @@index([status])
+  @@index([transactionId])
+}
+
+model Notification {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  parcelId  Int?
+  title     String
+  message   String
+  isRead    Boolean  @default(false)
+  createdAt DateTime @default(now())
+  parcel    Parcel?  @relation(fields: [parcelId], references: [id], onDelete: Cascade)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([parcelId])
+}
+
+model AuditLog {
+  id        Int      @id @default(autoincrement())
+  userId    Int?
+  action    String
+  entity    String
+  entityId  Int?
+  createdAt DateTime @default(now())
+  user      User?    @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+  @@index([entity])
+  @@index([entityId])
+}
+
 enum Role {
   CUSTOMER
   DRIVER
@@ -52,126 +167,4 @@ enum PaymentStatus {
   FAILED
   CANCELLED
   REFUNDED
-}
-
-model User {
-  id        Int        @id @default(autoincrement())
-  name      String
-  email     String     @unique
-  password  String
-  phone     String?
-  role      Role       @default(CUSTOMER)
-  status    UserStatus @default(ACTIVE)
-  createdAt DateTime   @default(now())
-  updatedAt DateTime   @updatedAt
-
-  customerParcels Parcel[]       @relation("CustomerParcels")
-  driver          Driver?
-  notifications   Notification[]
-  auditLogs       AuditLog[]
-  payments        Payment[]      @relation("UserPayments")
-}
-
-model Driver {
-  id            Int      @id @default(autoincrement())
-  userId        Int      @unique
-  licenseNumber String   @unique
-  vehicleNumber String   @unique
-  vehicleType   String
-  availability  Boolean  @default(true)
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
-
-  user    User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  parcels Parcel[] @relation("DriverParcels")
-}
-
-model Parcel {
-  id              Int          @id @default(autoincrement())
-  trackingNumber  String       @unique
-  customerId      Int
-  driverId        Int?
-  senderName      String
-  senderPhone     String
-  receiverName    String
-  receiverPhone   String
-  pickupAddress   String
-  deliveryAddress String
-  parcelType      String
-  weight          Float
-  deliveryType    DeliveryType
-  price           Float
-  status          ParcelStatus @default(PENDING)
-  createdAt       DateTime     @default(now())
-  updatedAt       DateTime     @updatedAt
-
-  customer      User                  @relation("CustomerParcels", fields: [customerId], references: [id], onDelete: Cascade)
-  driver        Driver?               @relation("DriverParcels", fields: [driverId], references: [id], onDelete: SetNull)
-  statusHistory ParcelStatusHistory[]
-  payments      Payment[]
-  notifications Notification[]
-}
-
-model ParcelStatusHistory {
-  id        Int          @id @default(autoincrement())
-  parcelId  Int
-  status    ParcelStatus
-  notes     String?
-  createdAt DateTime     @default(now())
-
-  parcel Parcel @relation(fields: [parcelId], references: [id], onDelete: Cascade)
-}
-
-model Payment {
-  id                 Int           @id @default(autoincrement())
-  parcelId           Int
-  userId             Int?
-  amount             Float
-  method             PaymentMethod @default(CASH_ON_DELIVERY)
-  status             PaymentStatus @default(PENDING)
-  transactionId      String?
-  phoneNumber        String?
-  mpesaReceiptNumber String?
-  failureReason      String?
-  createdAt          DateTime      @default(now())
-  updatedAt          DateTime      @updatedAt
-
-  parcel Parcel @relation(fields: [parcelId], references: [id], onDelete: Cascade)
-  user   User?  @relation("UserPayments", fields: [userId], references: [id], onDelete: SetNull)
-
-  @@index([parcelId])
-  @@index([userId])
-  @@index([status])
-  @@index([transactionId])
-}
-
-model Notification {
-  id        Int      @id @default(autoincrement())
-  userId    Int
-  parcelId  Int?
-  title     String
-  message   String
-  isRead    Boolean  @default(false)
-  createdAt DateTime @default(now())
-
-  user   User    @relation(fields: [userId], references: [id], onDelete: Cascade)
-  parcel Parcel? @relation(fields: [parcelId], references: [id], onDelete: Cascade)
-
-  @@index([userId])
-  @@index([parcelId])
-}
-
-model AuditLog {
-  id        Int      @id @default(autoincrement())
-  userId    Int?
-  action    String
-  entity    String
-  entityId  Int?
-  createdAt DateTime @default(now())
-
-  user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
-
-  @@index([userId])
-  @@index([entity])
-  @@index([entityId])
 }

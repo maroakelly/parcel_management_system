@@ -1,0 +1,443 @@
+.admin-deliveries-page {
+  min-height: 100vh;
+  background: #f5f7fb;
+  padding-bottom: 40px;
+}
+
+.admin-deliveries-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 40px;
+  background: #2563eb;
+  color: white;
+}
+
+.admin-deliveries-header h1 {
+  margin: 0;
+  font-size: 28px;
+}
+
+.admin-deliveries-header p {
+  margin: 6px 0 0;
+  opacity: 0.9;
+}
+
+.back-dashboard-button {
+  border: none;
+  border-radius: 8px;
+  padding: 11px 18px;
+  background: white;
+  color: #2563eb;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.back-dashboard-button:hover {
+  background: #eff6ff;
+}
+
+.admin-deliveries-error {
+  margin: 25px 40px;
+  padding: 15px;
+  border-radius: 8px;
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.delivery-summary-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding: 30px 40px 20px;
+}
+
+.delivery-summary-card {
+  background: white;
+  padding: 22px;
+  border-radius: 14px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+.delivery-summary-card span {
+  display: block;
+  color: #64748b;
+  margin-bottom: 10px;
+}
+
+.delivery-summary-card strong {
+  font-size: 30px;
+  color: #1e293b;
+}
+
+.delivery-controls {
+  display: flex;
+  gap: 20px;
+  align-items: end;
+  padding: 20px 40px;
+  background: white;
+  margin: 0 40px 20px;
+  border-radius: 14px;
+}
+
+.delivery-search {
+  flex: 1;
+}
+
+.delivery-search label,
+.delivery-filter label {
+  display: block;
+  margin-bottom: 7px;
+  font-weight: 600;
+  color: #334155;
+}
+
+.delivery-search input,
+.delivery-filter select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  outline: none;
+}
+
+.delivery-search input:focus,
+.delivery-filter select:focus {
+  border-color: #2563eb;
+}
+
+.delivery-filter {
+  width: 220px;
+}
+
+.refresh-deliveries-button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  background: #2563eb;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.refresh-deliveries-button:hover {
+  background: #1d4ed8;
+}
+
+.delivery-result-count {
+  margin: 0 40px 15px;
+  color: #64748b;
+}
+
+.admin-deliveries-table-wrapper {
+  margin: 0 40px;
+  background: white;
+  border-radius: 14px;
+  overflow-x: auto;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+.admin-deliveries-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 1000px;
+}
+
+.admin-deliveries-table th,
+.admin-deliveries-table td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.admin-deliveries-table th {
+  background: #f8fafc;
+  color: #334155;
+}
+
+.admin-deliveries-table td {
+  color: #475569;
+}
+
+.admin-deliveries-table small {
+  display: block;
+  margin-top: 4px;
+  color: #94a3b8;
+}
+
+.unassigned-driver {
+  color: #dc2626;
+  font-weight: 600;
+}
+
+.delivery-type,
+.delivery-status {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.delivery-type.standard {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.delivery-type.express {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.delivery-status.pending {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.delivery-status.assigned {
+  background: #e0e7ff;
+  color: #3730a3;
+}
+
+.delivery-status.picked_up,
+.delivery-status.in_transit,
+.delivery-status.out_for_delivery {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.delivery-status.delivered {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.delivery-status.delivery_failed,
+.delivery-status.cancelled {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.delivery-status.rescheduled,
+.delivery-status.returned {
+  background: #f3e8ff;
+  color: #7e22ce;
+}
+
+.manage-delivery-button {
+  padding: 9px 14px;
+  border: none;
+  border-radius: 7px;
+  background: #2563eb;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.manage-delivery-button:hover {
+  background: #1d4ed8;
+}
+
+.admin-deliveries-message {
+  margin: 40px;
+  padding: 50px;
+  text-align: center;
+  background: white;
+  border-radius: 14px;
+}
+
+.delivery-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.65);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  z-index: 1000;
+  overflow-y: auto;
+}
+
+.delivery-modal {
+  width: min(850px, 100%);
+  max-height: 90vh;
+  overflow-y: auto;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+}
+
+.delivery-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 25px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.delivery-modal-header h2 {
+  margin: 0;
+  color: #1e293b;
+}
+
+.delivery-modal-header p {
+  margin: 5px 0 0;
+  color: #64748b;
+}
+
+.close-delivery-modal {
+  border: none;
+  background: transparent;
+  font-size: 30px;
+  cursor: pointer;
+  color: #64748b;
+}
+
+.delivery-details {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+  padding: 25px;
+}
+
+.delivery-details div {
+  padding: 15px;
+  background: #f8fafc;
+  border-radius: 10px;
+}
+
+.delivery-details span,
+.delivery-addresses span {
+  display: block;
+  color: #64748b;
+  font-size: 13px;
+  margin-bottom: 5px;
+}
+
+.delivery-details strong {
+  color: #1e293b;
+}
+
+.delivery-addresses {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+  padding: 0 25px 25px;
+}
+
+.delivery-addresses div {
+  padding: 15px;
+  background: #f8fafc;
+  border-radius: 10px;
+}
+
+.delivery-addresses p {
+  margin: 0;
+  color: #334155;
+}
+
+.delivery-management-section {
+  margin: 0 25px 20px;
+  padding: 20px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+}
+
+.delivery-management-section h3 {
+  margin-top: 0;
+  color: #1e293b;
+}
+
+.delivery-driver-row {
+  display: flex;
+  gap: 10px;
+}
+
+.delivery-driver-row select,
+.delivery-status-select {
+  flex: 1;
+  padding: 11px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+}
+
+.delivery-driver-row button,
+.update-delivery-status-button {
+  padding: 11px 18px;
+  border: none;
+  border-radius: 8px;
+  background: #16a34a;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.update-delivery-status-button {
+  margin-top: 12px;
+  background: #2563eb;
+}
+
+.delivery-driver-row button:disabled,
+.update-delivery-status-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.delivery-modal-footer {
+  padding: 20px 25px;
+  border-top: 1px solid #e5e7eb;
+  text-align: right;
+}
+
+.close-delivery-button {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  background: #64748b;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+@media (max-width: 900px) {
+  .delivery-summary-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .delivery-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .delivery-filter {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .admin-deliveries-header {
+    padding: 20px;
+  }
+
+  .delivery-summary-cards {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+
+  .delivery-controls {
+    margin: 0 20px 20px;
+  }
+
+  .admin-deliveries-table-wrapper {
+    margin: 0 20px;
+  }
+
+  .delivery-result-count {
+    margin: 0 20px 15px;
+  }
+
+  .delivery-details,
+  .delivery-addresses {
+    grid-template-columns: 1fr;
+  }
+}

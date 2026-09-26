@@ -1,0 +1,61 @@
+.page-container {
+  min-height: 100vh;
+  padding: 40px;
+  background: #f5f7fb;
+}
+
+.page-container h1 {
+  margin-bottom: 30px;
+  color: #1f2937;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.parcel-table {
+  width: 100%;
+  overflow-x: auto;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.parcel-table table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 700px;
+}
+
+.parcel-table th {
+  padding: 18px;
+  text-align: left;
+  background: #f3f4f6;
+  color: #374151;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.parcel-table td {
+  padding: 18px;
+  border-top: 1px solid #e5e7eb;
+  color: #374151;
+  font-size: 14px;
+}
+
+.parcel-table tr:hover {
+  background: #f9fafb;
+}
+
+.parcel-table td:first-child {
+  color: #2563eb;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .page-container {
+    padding: 20px;
+  }
+
+  .page-container h1 {
+    font-size: 26px;
+  }
+}

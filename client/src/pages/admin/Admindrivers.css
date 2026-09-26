@@ -1,0 +1,142 @@
+.admin-drivers-page {
+  min-height: 100vh;
+  padding: 40px;
+  box-sizing: border-box;
+  background: #f5f7fb;
+}
+
+.admin-drivers-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.admin-drivers-header h1 {
+  margin: 0 0 6px;
+  color: #1f2937;
+  font-size: 32px;
+}
+
+.admin-drivers-header p {
+  margin: 0;
+  color: #6b7280;
+}
+
+.admin-drivers-header button {
+  padding: 11px 18px;
+  border: none;
+  border-radius: 8px;
+  background: #2563eb;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.admin-drivers-header button:hover {
+  background: #1d4ed8;
+}
+
+.admin-drivers-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.admin-drivers-table {
+  width: 100%;
+  min-width: 1000px;
+  border-collapse: collapse;
+}
+
+.admin-drivers-table th {
+  padding: 16px;
+  text-align: left;
+  background: #f3f4f6;
+  color: #374151;
+  font-size: 13px;
+}
+
+.admin-drivers-table td {
+  padding: 16px;
+  border-top: 1px solid #e5e7eb;
+  color: #4b5563;
+  font-size: 14px;
+}
+
+.admin-drivers-table tbody tr:hover {
+  background: #f9fafb;
+}
+
+.driver-availability,
+.driver-status {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.driver-availability.available {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.driver-availability.unavailable {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.driver-status.active {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.driver-status.suspended {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.driver-status.deleted {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.admin-drivers-message {
+  padding: 40px;
+  background: white;
+  border-radius: 16px;
+  text-align: center;
+  color: #6b7280;
+}
+
+.admin-drivers-message h2 {
+  color: #1f2937;
+}
+
+.admin-drivers-error {
+  margin-bottom: 20px;
+  padding: 18px;
+  border-radius: 10px;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #dc2626;
+}
+
+@media (max-width: 700px) {
+  .admin-drivers-page {
+    padding: 20px;
+  }
+
+  .admin-drivers-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .admin-drivers-header h1 {
+    font-size: 26px;
+  }
+}

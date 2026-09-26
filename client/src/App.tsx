@@ -19,7 +19,7 @@ import DriverDashboard from "./pages/Driver/DriverDashboard";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminParcels from "./pages/admin/adminparcels";
 import AdminCustomers from "./pages/admin/Admincustomers";
-import AdminDrivers from "./pages/admin/Admindrivers";
+import AdminDrivers from "./pages/admin/AdminDrivers";
 import Admindeliveries from "./pages/admin/Admindeliveries";
 import Adminreports from "./pages/admin/Adminreports";
 import RegisterDriver from "./pages/admin/Registerdriver";

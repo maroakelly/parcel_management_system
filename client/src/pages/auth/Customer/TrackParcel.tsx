@@ -53,7 +53,7 @@ export default function TrackParcel() {
       setParcel(null);
 
       const response = await fetch(
-        `http://localhost:5000/api/parcels/track/${encodeURIComponent(
+        `${import.meta.env.VITE_API_URL}/api/parcels/track/${encodeURIComponent(
           trackingNumber.trim()
         )}`,
         {

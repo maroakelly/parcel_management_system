@@ -96,7 +96,7 @@ function AdminParcels() {
       const [parcelResponse, driverResponse] =
         await Promise.all([
           fetch(
-            "http://localhost:5000/api/admin/parcels",
+            `${import.meta.env.VITE_API_URL}/api/admin/parcels`,
             {
               method: "GET",
               headers: {
@@ -107,7 +107,7 @@ function AdminParcels() {
           ),
 
           fetch(
-            "http://localhost:5000/api/admin/drivers",
+            `${import.meta.env.VITE_API_URL}/api/admin/drivers`,
             {
               method: "GET",
               headers: {
@@ -243,7 +243,7 @@ function AdminParcels() {
       setError("");
 
       const response = await fetch(
-        `http://localhost:5000/api/admin/parcels/${selectedParcel.id}/assign-driver`,
+        `${import.meta.env.VITE_API_URL}/api/admin/parcels/${selectedParcel.id}/assign-driver`,
         {
           method: "PATCH",
           headers: {
@@ -317,7 +317,7 @@ function AdminParcels() {
       setError("");
 
       const response = await fetch(
-        `http://localhost:5000/api/admin/parcels/${selectedParcel.id}/status`,
+        `${import.meta.env.VITE_API_URL}/api/admin/parcels/${selectedParcel.id}/status`,
         {
           method: "PATCH",
           headers: {
@@ -389,7 +389,7 @@ function AdminParcels() {
       setError("");
 
       const response = await fetch(
-        `http://localhost:5000/api/admin/parcels/${parcel.id}`,
+        `${import.meta.env.VITE_API_URL}/api/admin/parcels/${parcel.id}`,
         {
           method: "DELETE",
           headers: {

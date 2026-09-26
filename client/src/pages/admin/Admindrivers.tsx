@@ -47,7 +47,7 @@ function AdminDrivers() {
 
       try {
         const response = await fetch(
-          "http://localhost:5000/api/admin/drivers",
+          `${import.meta.env.VITE_API_URL}/api/admin/drivers`,
           {
             method: "GET",
             headers: {
@@ -102,7 +102,7 @@ function AdminDrivers() {
       setError("");
 
       const response = await fetch(
-        `http://localhost:5000/api/admin/drivers/${driverId}`,
+        `${import.meta.env.VITE_API_URL}/api/admin/drivers/${driverId}`,
         {
           method: "DELETE",
           headers: {

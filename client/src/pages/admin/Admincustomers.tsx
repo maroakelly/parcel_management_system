@@ -42,7 +42,7 @@ try {
   setError("");
 
   const response = await fetch(
-    "http://localhost:5000/api/admin/customers",
+    `${import.meta.env.VITE_API_URL}/api/admin/customers`,
     {
       method: "GET",
       headers: {
@@ -97,7 +97,7 @@ if (!token) {
 
 try {
   const response = await fetch(
-    `http://localhost:5000/api/admin/customers/${id}/status`,
+    `${import.meta.env.VITE_API_URL}/api/admin/customers/${id}/status`,
     {
       method: "PATCH",
       headers: {
@@ -161,7 +161,7 @@ if (!token) {
 
 try {
   const response = await fetch(
-    `http://localhost:5000/api/admin/customers/${id}`,
+    `${import.meta.env.VITE_API_URL}/api/admin/customers/${id}`,
     {
       method: "DELETE",
       headers: {

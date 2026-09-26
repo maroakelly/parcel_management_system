@@ -75,7 +75,7 @@ export default function Register() {
         public registrations as CUSTOMER.
       */
       const response = await fetch(
-        "http://localhost:5000/api/register",
+        `${import.meta.env.VITE_API_URL}/api/register`,
         {
           method: "POST",
 

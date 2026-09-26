@@ -86,13 +86,13 @@ export default function AdminDeliveries() {
 
       const [deliveriesResponse, driversResponse] =
         await Promise.all([
-          fetch("http://localhost:5000/api/admin/parcels", {
+          fetch(`${import.meta.env.VITE_API_URL}/api/admin/parcels`, {
             headers: {
               Authorization: `Bearer ${token}`,
             },
           }),
 
-          fetch("http://localhost:5000/api/admin/drivers", {
+          fetch(`${import.meta.env.VITE_API_URL}/api/admin/drivers`, {
             headers: {
               Authorization: `Bearer ${token}`,
             },
@@ -157,7 +157,7 @@ export default function AdminDeliveries() {
       setActionLoading(true);
 
       const response = await fetch(
-        `http://localhost:5000/api/admin/parcels/${selectedDelivery.id}/assign`,
+        `${import.meta.env.VITE_API_URL}/api/admin/parcels/${selectedDelivery.id}/assign`,
         {
           method: "PATCH",
           headers: {
@@ -209,7 +209,7 @@ export default function AdminDeliveries() {
       setActionLoading(true);
 
       const response = await fetch(
-        `http://localhost:5000/api/admin/parcels/${selectedDelivery.id}/status`,
+        `${import.meta.env.VITE_API_URL}/api/admin/parcels/${selectedDelivery.id}/status`,
         {
           method: "PATCH",
           headers: {

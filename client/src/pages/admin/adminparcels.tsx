@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./AdminParcels.css";
+import "./Adminparcels.css";
 
 interface Customer {
   id: number;

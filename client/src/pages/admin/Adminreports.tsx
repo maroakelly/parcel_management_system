@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import jsPDF from "jspdf";
-import "./AdminReports.css";
+import "./Adminreports.css";
 
 interface ReportSummary {
   totalCustomers: number;

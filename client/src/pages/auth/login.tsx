@@ -27,7 +27,7 @@ function Login() {
 
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/login`,
+  `/api/login`,
         {
           method: "POST",
           headers: {

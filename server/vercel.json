@@ -1,20 +1,8 @@
 {
-  "version": 2,
-  "builds": [
+  "rewrites": [
     {
-      "src": "src/server.ts",
-      "use": "@vercel/node"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "methods": ["OPTIONS"],
-      "dest": "src/server.ts"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "src/server.ts"
+      "source": "/api/:path*",
+      "destination": "https://parcel-management-system-8x3m-4xec8kifh.vercel.app/api/:path*"
     }
   ]
 }

@@ -12,10 +12,21 @@ dotenv.config();
 
 const app = express();
 
-// Allow frontend requests
-app.use(cors());
+const allowedOrigins = [
+  "https://parcel-management-system-lovat.vercel.app",
+  "http://localhost:5173",
+];
 
-app.use(express.json());
+app.use(
+  cors({
+    origin: allowedOrigins,
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true,
+  })
+);
+
+app.use(express.json({ limit: "10mb" }));
 
 // HOME
 app.get("/", (_req, res) => {

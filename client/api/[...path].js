@@ -8,7 +8,7 @@ export default async function handler(req, res) {
     const url = `${backendUrl}/api${path}`;
 
     const headers = {
-      "Content-Type": req.headers["content-type"] || "application/json",
+      "Content-Type": "application/json",
     };
 
     if (req.headers.authorization) {
@@ -18,10 +18,13 @@ export default async function handler(req, res) {
     let body;
 
     if (req.method !== "GET" && req.method !== "HEAD") {
-      body =
-        typeof req.body === "string"
-          ? req.body
-          : JSON.stringify(req.body || {});
+      if (typeof req.body === "string") {
+        body = req.body;
+      } else if (req.body) {
+        body = JSON.stringify(req.body);
+      } else {
+        body = JSON.stringify({});
+      }
     }
 
     const response = await fetch(url, {
@@ -30,14 +33,15 @@ export default async function handler(req, res) {
       body,
     });
 
-    const contentType =
-      response.headers.get("content-type") || "application/json";
-
-    const data = await response.text();
+    const responseText = await response.text();
 
     res.status(response.status);
-    res.setHeader("Content-Type", contentType);
-    res.send(data);
+    res.setHeader(
+      "Content-Type",
+      response.headers.get("content-type") || "application/json"
+    );
+
+    res.send(responseText);
   } catch (error) {
     console.error("Proxy error:", error);
 

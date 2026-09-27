@@ -12,45 +12,24 @@ dotenv.config();
 
 const app = express();
 
-const allowedOrigins = [
-  "http://localhost:5173",
-  "https://parcel-management-system-lovat.vercel.app",
-];
-
+// Allow the frontend to communicate with the backend
 app.use(
   cors({
-    origin: allowedOrigins,
-    credentials: true,
-  })
-);
-
-app.use(
-  cors({
-    origin: (origin, callback) => {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
+    origin: true,
     credentials: true,
   })
 );
 
 app.use(express.json());
 
-/*
-  HOME
-*/
+// HOME
 app.get("/", (_req, res) => {
   res.json({
     message: "Parcel Management System API is running!",
   });
 });
 
-/*
-  HEALTH CHECK
-*/
+// HEALTH CHECK
 app.get("/api/health", (_req, res) => {
   res.json({
     status: "OK",
@@ -58,29 +37,19 @@ app.get("/api/health", (_req, res) => {
   });
 });
 
-/*
-  AUTHENTICATION
-*/
+// AUTHENTICATION
 app.use("/api", authRoutes);
 
-/*
-  CUSTOMER
-*/
+// CUSTOMER
 app.use("/api", customerRoutes);
 
-/*
-  PARCELS
-*/
+// PARCELS
 app.use("/api", parcelRoutes);
 
-/*
-  ADMIN
-*/
+// ADMIN
 app.use("/api/admin", adminRoutes);
 
-/*
-  PAYMENTS
-*/
+// PAYMENTS
 app.use("/api", paymentRoutes);
 
 export default app;

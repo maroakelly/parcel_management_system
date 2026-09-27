@@ -22,19 +22,23 @@ function Login() {
     }
 
     setLoading(true);
+
     console.log("API URL:", import.meta.env.VITE_API_URL);
 
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/login`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: email.trim().toLowerCase(),
-          password,
-        }),
-      });
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/login`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: email.trim().toLowerCase(),
+            password,
+          }),
+        }
+      );
 
       const data = await response.json();
 
@@ -48,11 +52,14 @@ function Login() {
         return;
       }
 
+      // Save login information
       localStorage.setItem("token", data.token);
       localStorage.setItem("user", JSON.stringify(data.user));
 
+      // Get user role
       const role = String(data.user.role).toUpperCase();
 
+      // Redirect according to role
       if (
         role === "ADMIN" ||
         role === "SUPER_ADMIN" ||
@@ -65,10 +72,12 @@ function Login() {
         navigate("/customer/dashboard");
       }
     } catch (err) {
-      console.error(err);
+      console.error("Login error:", err);
 
       setError(
-        "Cannot connect to the server. Please make sure the backend is running."
+        err instanceof Error
+          ? err.message
+          : "Unable to connect to the server."
       );
     } finally {
       setLoading(false);

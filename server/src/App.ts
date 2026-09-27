@@ -12,17 +12,8 @@ dotenv.config();
 
 const app = express();
 
-// Allow the frontend to communicate with the backend
-app.use(
-  cors({
-    origin: true,
-    credentials: true,
-    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-  })
-);
-
-app.options("*", cors());
+// Allow frontend requests
+app.use(cors());
 
 app.use(express.json());
 

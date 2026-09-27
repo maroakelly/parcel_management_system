@@ -1,8 +1,0 @@
-{
-  "rewrites": [
-    {
-      "source": "/api/:path*",
-      "destination": "https://parcel-management-system-8x3m-4xec8kifh.vercel.app/api/:path*"
-    }
-  ]
-}

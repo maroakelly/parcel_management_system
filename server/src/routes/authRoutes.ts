@@ -90,6 +90,7 @@ router.post("/register", async (req, res) => {
 */
 router.post("/login", async (req, res) => {
   try {
+    console.log("LOGIN BODY:", req.body);
     const { email, password } = req.body;
 
     if (!email || !password) {

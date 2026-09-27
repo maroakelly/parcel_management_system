@@ -4,36 +4,26 @@ export default async function handler(req, res) {
       "https://parcel-management-system-8x3m-4xec8kifh.vercel.app";
 
     const path = req.url.replace(/^\/api/, "");
-
     const url = `${backendUrl}/api${path}`;
 
-    const headers = {
-      "Content-Type": "application/json",
-    };
-
-    if (req.headers.authorization) {
-      headers.Authorization = req.headers.authorization;
-    }
-
-    let body;
+    let body = undefined;
 
     if (req.method !== "GET" && req.method !== "HEAD") {
-      if (typeof req.body === "string") {
-        body = req.body;
-      } else if (req.body) {
-        body = JSON.stringify(req.body);
-      } else {
-        body = JSON.stringify({});
-      }
+      body = JSON.stringify(req.body);
     }
 
     const response = await fetch(url, {
       method: req.method,
-      headers,
+      headers: {
+        "Content-Type": "application/json",
+        ...(req.headers.authorization
+          ? { Authorization: req.headers.authorization }
+          : {}),
+      },
       body,
     });
 
-    const responseText = await response.text();
+    const data = await response.text();
 
     res.status(response.status);
     res.setHeader(
@@ -41,7 +31,7 @@ export default async function handler(req, res) {
       response.headers.get("content-type") || "application/json"
     );
 
-    res.send(responseText);
+    res.send(data);
   } catch (error) {
     console.error("Proxy error:", error);
 

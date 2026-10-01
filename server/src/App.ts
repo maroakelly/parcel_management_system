@@ -12,18 +12,19 @@ dotenv.config();
 
 const app = express();
 
-/*
-  CORS
-  The frontend and backend are hosted on different Vercel domains.
-*/
-app.use(
-  cors({
-    origin: true,
-    credentials: true,
-    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-  })
-);
+const corsOptions = {
+  origin: "https://parcel-management-system-lovat.vercel.app",
+  methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true,
+  optionsSuccessStatus: 204,
+};
+
+// CORS must be registered before the API routes.
+app.use(cors(corsOptions));
+
+// Explicitly answer browser preflight requests.
+app.options("/api/*splat", cors(corsOptions));
 
 app.use(express.json());
 

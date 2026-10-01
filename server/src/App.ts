@@ -12,19 +12,20 @@ dotenv.config();
 
 const app = express();
 
+const allowedOrigins = [
+  "http://localhost:5173",
+  "http://127.0.0.1:5173",
+];
+
 const corsOptions = {
-  origin: "https://parcel-management-system-lovat.vercel.app",
+  origin: allowedOrigins,
   methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true,
   optionsSuccessStatus: 204,
 };
 
-// CORS must be registered before the API routes.
 app.use(cors(corsOptions));
-
-// Explicitly answer browser preflight requests.
-app.options("/api/*splat", cors(corsOptions));
 
 app.use(express.json());
 

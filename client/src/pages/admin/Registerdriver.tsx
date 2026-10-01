@@ -65,7 +65,21 @@ function RegisterDriver() {
         }
       );
 
-      const data = await response.json();
+      const responseText = await response.text();
+
+      let data: {
+        message?: string;
+      } = {};
+
+      try {
+        data = responseText
+          ? JSON.parse(responseText)
+          : {};
+      } catch {
+        throw new Error(
+          "The server returned an invalid response. Please check the backend server and API URL."
+        );
+      }
 
       if (!response.ok) {
         throw new Error(

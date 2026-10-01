@@ -126,6 +126,132 @@ router.get(
 
 /*
 ====================================================
+REGISTER DRIVER
+POST /api/admin/drivers/register
+====================================================
+*/
+
+router.post(
+  "/drivers/register",
+  authenticate,
+  async (req: AuthRequest, res) => {
+    try {
+      if (!checkAdmin(req)) {
+        return res.status(403).json({
+          message: "Admin access required",
+        });
+      }
+
+      const {
+        name,
+        email,
+        phone,
+        password,
+        licenseNumber,
+        vehicleNumber,
+        vehicleType,
+      } = req.body;
+
+      if (
+        !name ||
+        !email ||
+        !password ||
+        !licenseNumber ||
+        !vehicleNumber ||
+        !vehicleType
+      ) {
+        return res.status(400).json({
+          message: "All required driver fields must be provided",
+        });
+      }
+
+      if (password.length < 8) {
+        return res.status(400).json({
+          message: "Password must be at least 8 characters",
+        });
+      }
+
+      const existingUser = await prisma.user.findUnique({
+        where: {
+          email: email.toLowerCase().trim(),
+        },
+      });
+
+      if (existingUser) {
+        return res.status(409).json({
+          message: "A user with this email already exists",
+        });
+      }
+
+      const existingLicense = await prisma.driver.findFirst({
+        where: {
+          licenseNumber,
+        },
+      });
+
+      if (existingLicense) {
+        return res.status(409).json({
+          message: "A driver with this license number already exists",
+        });
+      }
+
+      const hashedPassword = await bcrypt.hash(password, 10);
+
+      const driver = await prisma.$transaction(
+        async (tx) => {
+          const user = await tx.user.create({
+            data: {
+              name,
+              email: email.toLowerCase().trim(),
+              phone: phone || null,
+              password: hashedPassword,
+              role: "DRIVER",
+              status: "ACTIVE",
+            },
+          });
+
+          const newDriver = await tx.driver.create({
+            data: {
+              userId: user.id,
+              licenseNumber,
+              vehicleNumber,
+              vehicleType,
+              availability: true,
+            },
+            include: {
+              user: {
+                select: {
+                  id: true,
+                  name: true,
+                  email: true,
+                  phone: true,
+                  role: true,
+                  status: true,
+                },
+              },
+            },
+          });
+
+          return newDriver;
+        }
+      );
+
+      return res.status(201).json({
+        message: "Driver registered successfully",
+        driver,
+      });
+    } catch (error) {
+      console.error("Register driver error:", error);
+
+      return res.status(500).json({
+        message: "Unable to register driver",
+      });
+    }
+  }
+);
+
+/*
+====================================================
 ASSIGN DRIVER TO PARCEL
 PATCH /api/admin/parcels/:id/assign-driver
 ====================================================
@@ -619,6 +745,7 @@ router.delete(
     }
   }
 );
+
 /*
 ====================================================
 SYSTEM REPORTS
@@ -725,4 +852,5 @@ router.get(
     }
   }
 );
+
 export default router;

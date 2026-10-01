@@ -157,7 +157,7 @@ export default function AdminDeliveries() {
       setActionLoading(true);
 
       const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/admin/parcels/${selectedDelivery.id}/assign`,
+        `${import.meta.env.VITE_API_URL}/api/admin/parcels/${selectedDelivery.id}/assign-driver`,
         {
           method: "PATCH",
           headers: {
@@ -170,7 +170,22 @@ export default function AdminDeliveries() {
         }
       );
 
-      const data = await response.json();
+      const text = await response.text();
+
+      let data: {
+        message?: string;
+        parcel?: Delivery;
+      };
+
+      try {
+        data = text ? JSON.parse(text) : {};
+      } catch {
+        console.error("Server response:", text);
+
+        throw new Error(
+          "The server returned an invalid response. Check that your API URL is correct."
+        );
+      }
 
       if (!response.ok) {
         throw new Error(
@@ -178,18 +193,17 @@ export default function AdminDeliveries() {
         );
       }
 
-      await fetchData();
-
-      const updatedDelivery = deliveries.find(
-        (item) => item.id === selectedDelivery.id
+      alert(
+        data.message || "Driver assigned successfully."
       );
 
-      if (updatedDelivery) {
-        setSelectedDelivery(updatedDelivery);
-      }
+      await fetchData();
 
-      alert("Driver assigned successfully.");
+      setSelectedDelivery(null);
+      setSelectedDriver("");
     } catch (err) {
+      console.error("Assign driver error:", err);
+
       alert(
         err instanceof Error
           ? err.message
@@ -222,7 +236,22 @@ export default function AdminDeliveries() {
         }
       );
 
-      const data = await response.json();
+      const text = await response.text();
+
+      let data: {
+        message?: string;
+        parcel?: Delivery;
+      };
+
+      try {
+        data = text ? JSON.parse(text) : {};
+      } catch {
+        console.error("Server response:", text);
+
+        throw new Error(
+          "The server returned an invalid response. Check that your API URL is correct."
+        );
+      }
 
       if (!response.ok) {
         throw new Error(
@@ -230,12 +259,17 @@ export default function AdminDeliveries() {
         );
       }
 
+      alert(
+        data.message ||
+          "Delivery status updated successfully."
+      );
+
       await fetchData();
 
       setSelectedDelivery(null);
-
-      alert("Delivery status updated successfully.");
     } catch (err) {
+      console.error("Update status error:", err);
+
       alert(
         err instanceof Error
           ? err.message

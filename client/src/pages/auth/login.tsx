@@ -24,7 +24,9 @@ function Login() {
     setLoading(true);
 
     try {
-      const response = await fetch("/api/login", {
+      const apiUrl = import.meta.env.VITE_API_URL;
+
+      const response = await fetch(`${apiUrl}/api/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -35,7 +37,16 @@ function Login() {
         }),
       });
 
-      const data = await response.json();
+      const text = await response.text();
+
+      let data: any = {};
+
+      try {
+        data = text ? JSON.parse(text) : {};
+      } catch {
+        setError("The server returned an invalid response.");
+        return;
+      }
 
       if (!response.ok) {
         setError(data.message || "Invalid email or password.");
@@ -93,9 +104,7 @@ function Login() {
 
         <div className="login-heading">
           <h2>Welcome Back</h2>
-          <p>
-            Sign in to manage your parcels and deliveries.
-          </p>
+          <p>Sign in to manage your parcels and deliveries.</p>
         </div>
 
         <form onSubmit={handleLogin}>

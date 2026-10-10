@@ -23,6 +23,7 @@ import AdminDrivers from "./pages/admin/AdminDrivers";
 import Admindeliveries from "./pages/admin/Admindeliveries";
 import Adminreports from "./pages/admin/Adminreports";
 import RegisterDriver from "./pages/admin/Registerdriver";
+import CustomerSupportPage from "./pages/auth/Customer/CustomerSupportPage";
 
 import Adminroute from "./components/Adminroute";
 
@@ -128,6 +129,15 @@ function App() {
             </RoleRoute>
           }
         />
+        {/* CUSTOMER SUPPORT */}
+<Route
+  path="/customer/support"
+  element={
+    <RoleRoute role="CUSTOMER">
+      <CustomerSupportPage />
+    </RoleRoute>
+  }
+/>
 
         {/* PAYMENT */}
         <Route

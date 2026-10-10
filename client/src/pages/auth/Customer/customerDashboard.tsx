@@ -252,6 +252,13 @@ function CustomerDashboard() {
             Payments
           </button>
         </nav>
+        <button
+  className="nav-item"
+  onClick={() => navigate("/customer/support")}
+>
+  <span>💬</span>
+  Customer Support
+</button>
 
         <div className="sidebar-bottom">
           <button

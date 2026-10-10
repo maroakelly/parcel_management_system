@@ -7,6 +7,7 @@ import customerRoutes from "./routes/customerRoutes";
 import parcelRoutes from "./routes/parcelRoutes";
 import adminRoutes from "./routes/adminroutes";
 import paymentRoutes from "./routes/paymentRoutes";
+import aiRoutes from "./routes/aiRoutes";
 
 dotenv.config();
 
@@ -47,5 +48,6 @@ app.use("/api", customerRoutes);
 app.use("/api", parcelRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api", paymentRoutes);
+app.use("/api/ai", aiRoutes);
 
 export default app;

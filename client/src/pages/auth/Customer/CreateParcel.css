@@ -1,5 +1,6 @@
 /* =========================================
    CREATE PARCEL PAGE
+   All styles are scoped to this page only.
    ========================================= */
 
 .create-parcel-page {
@@ -13,7 +14,7 @@
    SIDEBAR
    ========================================= */
 
-.create-sidebar {
+.create-parcel-page .create-sidebar {
   width: 260px;
   min-height: 100vh;
   background: #111827;
@@ -26,7 +27,7 @@
   flex-direction: column;
 }
 
-.create-logo {
+.create-parcel-page .create-logo {
   padding: 28px 22px;
   display: flex;
   align-items: center;
@@ -34,7 +35,7 @@
   border-bottom: 1px solid #263244;
 }
 
-.create-logo-icon {
+.create-parcel-page .create-logo-icon {
   width: 45px;
   height: 45px;
   border-radius: 12px;
@@ -45,25 +46,25 @@
   font-size: 22px;
 }
 
-.create-logo h2 {
+.create-parcel-page .create-logo h2 {
   margin: 0;
   font-size: 19px;
 }
 
-.create-logo span {
+.create-parcel-page .create-logo span {
   color: #9ca3af;
   font-size: 11px;
 }
 
-.create-nav {
+.create-parcel-page .create-nav {
   padding: 25px 14px;
   display: flex;
   flex-direction: column;
   gap: 7px;
 }
 
-.create-nav button,
-.create-logout {
+.create-parcel-page .create-nav button,
+.create-parcel-page .create-logout {
   border: none;
   background: transparent;
   color: #cbd5e1;
@@ -77,24 +78,24 @@
   text-align: left;
 }
 
-.create-nav button:hover {
+.create-parcel-page .create-nav button:hover {
   background: #1e293b;
   color: white;
 }
 
-.create-nav button.active {
+.create-parcel-page .create-nav button.active {
   background: #2563eb;
   color: white;
 }
 
-.create-logout {
+.create-parcel-page .create-logout {
   margin-top: auto;
   margin-bottom: 15px;
   margin-left: 14px;
   margin-right: 14px;
 }
 
-.create-logout:hover {
+.create-parcel-page .create-logout:hover {
   background: #7f1d1d;
   color: white;
 }
@@ -103,17 +104,18 @@
    MAIN
    ========================================= */
 
-.create-main {
+.create-parcel-page .create-main {
   margin-left: 260px;
   width: calc(100% - 260px);
   padding: 35px;
+  box-sizing: border-box;
 }
 
-.create-header {
+.create-parcel-page .create-header {
   margin-bottom: 25px;
 }
 
-.back-button {
+.create-parcel-page .back-button {
   border: none;
   background: transparent;
   color: #2563eb;
@@ -123,13 +125,13 @@
   margin-bottom: 12px;
 }
 
-.create-header h1 {
+.create-parcel-page .create-header h1 {
   margin: 0;
   font-size: 28px;
   color: #111827;
 }
 
-.create-header p {
+.create-parcel-page .create-header p {
   color: #6b7280;
   margin-top: 7px;
 }
@@ -138,29 +140,29 @@
    ALERTS
    ========================================= */
 
-.parcel-alert {
+.create-parcel-page .parcel-alert {
   border-radius: 12px;
   padding: 16px;
   margin-bottom: 20px;
 }
 
-.parcel-alert.error {
+.create-parcel-page .parcel-alert.error {
   background: #fee2e2;
   color: #991b1b;
   border: 1px solid #fecaca;
 }
 
-.parcel-alert.success {
+.create-parcel-page .parcel-alert.success {
   background: #ecfdf5;
   color: #065f46;
   border: 1px solid #a7f3d0;
 }
 
-.parcel-alert.success p {
+.create-parcel-page .parcel-alert.success p {
   margin: 5px 0 15px;
 }
 
-.tracking-result {
+.create-parcel-page .tracking-result {
   background: white;
   border: 1px solid #a7f3d0;
   border-radius: 10px;
@@ -170,18 +172,18 @@
   margin-bottom: 12px;
 }
 
-.tracking-result span {
+.create-parcel-page .tracking-result span {
   font-size: 11px;
   color: #6b7280;
 }
 
-.tracking-result strong {
+.create-parcel-page .tracking-result strong {
   color: #047857;
   font-size: 18px;
   letter-spacing: 1px;
 }
 
-.parcel-alert.success button {
+.create-parcel-page .parcel-alert.success button {
   display: block;
   border: none;
   background: #059669;
@@ -195,7 +197,7 @@
    LAYOUT
    ========================================= */
 
-.create-layout {
+.create-parcel-page .create-layout {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 330px;
   gap: 22px;
@@ -206,18 +208,26 @@
    FORM CARD
    ========================================= */
 
-.parcel-form-card {
+.create-parcel-page .parcel-form-card {
   background: white;
   border: 1px solid #e5e7eb;
   border-radius: 17px;
   padding: 28px;
   box-shadow: 0 5px 20px rgba(15, 23, 42, 0.04);
+  color: #111827;
+  box-sizing: border-box;
+  min-width: 0;
+}
 
-  /* Prevent inherited white text */
+.create-parcel-page .parcel-form-card h1 {
   color: #111827;
 }
 
-.form-section-title {
+.create-parcel-page .parcel-form-card > p {
+  color: #6b7280;
+}
+
+.create-parcel-page .form-section-title {
   display: flex;
   gap: 12px;
   align-items: center;
@@ -225,7 +235,7 @@
   margin-top: 5px;
 }
 
-.form-section-title span {
+.create-parcel-page .form-section-title span {
   width: 42px;
   height: 42px;
   border-radius: 10px;
@@ -236,36 +246,37 @@
   font-size: 19px;
 }
 
-.form-section-title h2 {
+.create-parcel-page .form-section-title h2 {
   margin: 0;
   font-size: 17px;
   color: #111827;
 }
 
-.form-section-title p {
+.create-parcel-page .form-section-title p {
   margin: 4px 0 0;
   color: #6b7280;
   font-size: 12px;
 }
 
-.location-title {
+.create-parcel-page .location-title {
   margin-top: 30px;
 }
 
-.form-row {
+.create-parcel-page .form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 17px;
 }
 
-.form-field {
+.create-parcel-page .form-field {
   margin-bottom: 18px;
   color: #111827;
 }
 
-.form-field label {
+.create-parcel-page .form-field label,
+.create-parcel-page .parcel-form-card form > label {
   display: block;
-  color: #374151 !important;
+  color: #374151;
   font-size: 13px;
   font-weight: 600;
   margin-bottom: 7px;
@@ -275,103 +286,87 @@
    TEXT INPUTS
    ========================================= */
 
-.form-field input[type="text"],
-.form-field input[type="tel"],
-.form-field input[type="number"] {
+.create-parcel-page .form-field input[type="text"],
+.create-parcel-page .form-field input[type="tel"],
+.create-parcel-page .form-field input[type="number"],
+.create-parcel-page .parcel-form-card form > input {
   width: 100%;
   box-sizing: border-box;
-
   height: 46px;
   padding: 12px 13px;
-
   border: 1px solid #cbd5e1;
   border-radius: 9px;
-
-  background-color: #ffffff !important;
-  background-image: none !important;
-
-  color: #111827 !important;
-  -webkit-text-fill-color: #111827 !important;
-
+  background-color: #ffffff;
+  background-image: none;
+  color: #111827;
+  -webkit-text-fill-color: #111827;
   font-size: 14px;
   font-family: Arial, sans-serif;
   font-weight: 400;
-
   outline: none;
-  opacity: 1 !important;
-
-  caret-color: #111827 !important;
-
+  opacity: 1;
+  caret-color: #111827;
   transition: 0.2s;
+  margin-bottom: 16px;
 }
 
-.form-field input[type="text"]:focus,
-.form-field input[type="tel"]:focus,
-.form-field input[type="number"]:focus {
-  background-color: #ffffff !important;
-
-  color: #111827 !important;
-  -webkit-text-fill-color: #111827 !important;
-
+.create-parcel-page .form-field input[type="text"]:focus,
+.create-parcel-page .form-field input[type="tel"]:focus,
+.create-parcel-page .form-field input[type="number"]:focus,
+.create-parcel-page .parcel-form-card form > input:focus {
+  background-color: #ffffff;
+  color: #111827;
+  -webkit-text-fill-color: #111827;
   border-color: #2563eb;
-
   box-shadow: 0 0 0 3px #dbeafe;
 }
 
-.form-field input::placeholder {
-  color: #6b7280 !important;
-  -webkit-text-fill-color: #6b7280 !important;
-  opacity: 1 !important;
+.create-parcel-page .form-field input::placeholder,
+.create-parcel-page .parcel-form-card form > input::placeholder {
+  color: #6b7280;
+  -webkit-text-fill-color: #6b7280;
+  opacity: 1;
 }
 
 /* =========================================
-   PARCEL TYPE DROPDOWN
+   DROPDOWNS
    ========================================= */
 
-.form-field select {
+.create-parcel-page .form-field select,
+.create-parcel-page .parcel-form-card form > select {
   width: 100%;
   box-sizing: border-box;
-
   height: 46px;
   padding: 0 13px;
-
   border: 1px solid #cbd5e1;
   border-radius: 9px;
-
-  background-color: #ffffff !important;
-  background-image: none !important;
-
-  color: #111827 !important;
-  -webkit-text-fill-color: #111827 !important;
-
+  background-color: #ffffff;
+  background-image: none;
+  color: #111827;
+  -webkit-text-fill-color: #111827;
   font-size: 14px;
   font-family: Arial, sans-serif;
   font-weight: 400;
-
   outline: none;
-  opacity: 1 !important;
-
+  opacity: 1;
   cursor: pointer;
-
   transition: 0.2s;
+  margin-bottom: 16px;
 }
 
-.form-field select:focus {
-  background-color: #ffffff !important;
-
-  color: #111827 !important;
-  -webkit-text-fill-color: #111827 !important;
-
+.create-parcel-page .form-field select:focus,
+.create-parcel-page .parcel-form-card form > select:focus {
+  background-color: #ffffff;
+  color: #111827;
+  -webkit-text-fill-color: #111827;
   border-color: #2563eb;
-
   box-shadow: 0 0 0 3px #dbeafe;
 }
 
-/* Dropdown options */
-.form-field select option {
-  background-color: #ffffff !important;
-  color: #111827 !important;
-
+.create-parcel-page .form-field select option,
+.create-parcel-page .parcel-form-card form > select option {
+  background-color: #ffffff;
+  color: #111827;
   font-size: 14px;
   font-family: Arial, sans-serif;
 }
@@ -380,14 +375,14 @@
    DELIVERY OPTIONS
    ========================================= */
 
-.delivery-options {
+.create-parcel-page .delivery-options {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 13px;
   margin-bottom: 25px;
 }
 
-.delivery-option {
+.create-parcel-page .delivery-option {
   border: 1px solid #d1d5db;
   border-radius: 11px;
   padding: 15px;
@@ -395,37 +390,36 @@
   align-items: center;
   gap: 10px;
   cursor: pointer;
-
   background: #ffffff;
   color: #111827;
 }
 
-.delivery-option.selected {
+.create-parcel-page .delivery-option.selected {
   border-color: #2563eb;
   background: #eff6ff;
 }
 
-.delivery-option input {
+.create-parcel-page .delivery-option input {
   accent-color: #2563eb;
 }
 
-.delivery-option div {
+.create-parcel-page .delivery-option div {
   flex: 1;
 }
 
-.delivery-option strong {
+.create-parcel-page .delivery-option strong {
   display: block;
-  color: #111827 !important;
+  color: #111827;
   font-size: 13px;
 }
 
-.delivery-option span {
-  color: #6b7280 !important;
+.create-parcel-page .delivery-option span {
+  color: #6b7280;
   font-size: 11px;
 }
 
-.delivery-option b {
-  color: #2563eb !important;
+.create-parcel-page .delivery-option b {
+  color: #2563eb;
   font-size: 13px;
 }
 
@@ -433,11 +427,13 @@
    CREATE BUTTON
    ========================================= */
 
-.create-parcel-button {
+.create-parcel-page .create-parcel-button,
+.create-parcel-page .parcel-form-card form button[type="submit"] {
   width: 100%;
+  box-sizing: border-box;
   border: none;
   background: #2563eb;
-  color: white !important;
+  color: white;
   padding: 14px;
   border-radius: 10px;
   font-size: 14px;
@@ -446,69 +442,97 @@
   transition: 0.2s;
 }
 
-.create-parcel-button:hover {
+.create-parcel-page .create-parcel-button:hover,
+.create-parcel-page .parcel-form-card form button[type="submit"]:hover {
   background: #1d4ed8;
 }
 
-.create-parcel-button:disabled {
+.create-parcel-page .create-parcel-button:disabled,
+.create-parcel-page .parcel-form-card form button[type="submit"]:disabled {
   opacity: 0.6;
   cursor: not-allowed;
+}
+
+/* =========================================
+   ERROR AND SUCCESS MESSAGES
+   ========================================= */
+
+.create-parcel-page .error-message {
+  color: #b91c1c;
+  background: #fee2e2;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.create-parcel-page .success-message {
+  color: #047857;
+  background: #ecfdf5;
+  border: 1px solid #a7f3d0;
+  border-radius: 8px;
+  padding: 12px;
 }
 
 /* =========================================
    PRICE CARD
    ========================================= */
 
-.price-card {
+.create-parcel-page .price-card {
   background: #111827;
   color: white;
   border-radius: 17px;
   padding: 25px;
   position: sticky;
   top: 25px;
+  box-sizing: border-box;
+  min-width: 0;
 }
 
-.price-header {
+.create-parcel-page .price-card h2 {
+  color: white;
+}
+
+.create-parcel-page .price-header {
   display: flex;
   align-items: center;
   gap: 11px;
 }
 
-.price-header > span {
+.create-parcel-page .price-header > span {
   font-size: 22px;
 }
 
-.price-header h2 {
+.create-parcel-page .price-header h2 {
   margin: 0;
   font-size: 17px;
 }
 
-.price-header p {
+.create-parcel-page .price-header p {
   margin: 4px 0 0;
   color: #9ca3af;
   font-size: 11px;
 }
 
-.price-amount {
+.create-parcel-page .price-amount {
   padding: 25px 0;
   border-bottom: 1px solid #374151;
 }
 
-.price-amount span {
+.create-parcel-page .price-amount span {
   color: #9ca3af;
   font-size: 12px;
   margin-right: 6px;
 }
 
-.price-amount strong {
+.create-parcel-page .price-amount strong {
   font-size: 31px;
 }
 
-.price-breakdown {
+.create-parcel-page .price-breakdown {
   padding: 20px 0;
 }
 
-.price-breakdown div {
+.create-parcel-page .price-breakdown div {
   display: flex;
   justify-content: space-between;
   padding: 8px 0;
@@ -516,7 +540,19 @@
   font-size: 12px;
 }
 
-.price-info {
+.create-parcel-page .price-breakdown p {
+  color: #d1d5db;
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+.create-parcel-page .price-breakdown h3 {
+  color: white;
+  font-size: 20px;
+  overflow-wrap: anywhere;
+}
+
+.create-parcel-page .price-info {
   display: flex;
   gap: 9px;
   background: #1f2937;
@@ -524,7 +560,7 @@
   padding: 12px;
 }
 
-.price-info p {
+.create-parcel-page .price-info p {
   margin: 0;
   color: #9ca3af;
   font-size: 10px;
@@ -536,41 +572,41 @@
    ========================================= */
 
 @media (max-width: 1050px) {
-  .create-layout {
-    grid-template-columns: 1fr;
+  .create-parcel-page .create-layout {
+    grid-template-columns: minmax(0, 1fr);
   }
 
-  .price-card {
+  .create-parcel-page .price-card {
     position: static;
   }
 }
 
 @media (max-width: 800px) {
-  .create-sidebar {
+  .create-parcel-page .create-sidebar {
     width: 75px;
   }
 
-  .create-logo {
+  .create-parcel-page .create-logo {
     justify-content: center;
     padding: 20px 10px;
   }
 
-  .create-logo > div:last-child {
+  .create-parcel-page .create-logo > div:last-child {
     display: none;
   }
 
-  .create-nav button,
-  .create-logout {
+  .create-parcel-page .create-nav button,
+  .create-parcel-page .create-logout {
     justify-content: center;
     padding: 14px 5px;
   }
 
-  .create-nav button span,
-  .create-logout span {
+  .create-parcel-page .create-nav button span,
+  .create-parcel-page .create-logout span {
     display: none;
   }
 
-  .create-main {
+  .create-parcel-page .create-main {
     margin-left: 75px;
     width: calc(100% - 75px);
     padding: 22px;
@@ -578,24 +614,24 @@
 }
 
 @media (max-width: 600px) {
-  .create-main {
+  .create-parcel-page .create-main {
     padding: 15px;
   }
 
-  .parcel-form-card {
+  .create-parcel-page .parcel-form-card {
     padding: 20px;
   }
 
-  .form-row {
+  .create-parcel-page .form-row {
     grid-template-columns: 1fr;
     gap: 0;
   }
 
-  .delivery-options {
+  .create-parcel-page .delivery-options {
     grid-template-columns: 1fr;
   }
 
-  .create-header h1 {
+  .create-parcel-page .create-header h1 {
     font-size: 23px;
   }
 }

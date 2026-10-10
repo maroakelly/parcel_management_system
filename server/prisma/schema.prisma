@@ -107,6 +107,12 @@ model Notification {
   @@index([userId])
   @@index([parcelId])
 }
+model PricingSetting {
+  id               Int      @id @default(1)
+  pricePerKg       Float    @default(1)
+  expressMultiplier Float   @default(1.5)
+  updatedAt        DateTime @updatedAt
+}
 
 model AuditLog {
   id        Int      @id @default(autoincrement())

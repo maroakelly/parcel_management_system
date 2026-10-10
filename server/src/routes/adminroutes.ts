@@ -19,6 +19,12 @@ function checkAdmin(req: AuthRequest): boolean {
     req.user.role === "SUPPORT"
   );
 }
+function canManagePricing(req: AuthRequest): boolean {
+  return (
+    req.user?.role === "ADMIN" ||
+    req.user?.role === "SUPER_ADMIN"
+  );
+}
 
 /*
 ====================================================
@@ -848,6 +854,115 @@ router.get(
 
       return res.status(500).json({
         message: "Unable to generate system reports",
+      });
+    }
+  }
+);
+/*
+====================================================
+GET CURRENT PRICING
+GET /api/admin/pricing
+====================================================
+*/
+
+router.get(
+  "/pricing",
+  authenticate,
+  async (req: AuthRequest, res) => {
+    try {
+      if (!canManagePricing(req)) {
+        return res.status(403).json({
+          message: "Only administrators can view pricing",
+        });
+      }
+
+      const pricing = await prisma.pricingSetting.upsert({
+        where: { id: 1 },
+        update: {},
+        create: {
+          id: 1,
+          pricePerKg: 50,
+          expressMultiplier: 1.5,
+        },
+      });
+
+      return res.status(200).json({ pricing });
+    } catch (error) {
+      console.error("Get pricing error:", error);
+
+      return res.status(500).json({
+        message: "Unable to retrieve pricing",
+      });
+    }
+  }
+);
+
+/*
+====================================================
+UPDATE PRICE PER KG
+PATCH /api/admin/pricing
+====================================================
+*/
+
+router.patch(
+  "/pricing",
+  authenticate,
+  async (req: AuthRequest, res) => {
+    try {
+      if (!canManagePricing(req)) {
+        return res.status(403).json({
+          message: "Only administrators can change pricing",
+        });
+      }
+
+      const rawPrice = req.body?.pricePerKg;
+
+      if (
+        rawPrice === undefined ||
+        rawPrice === null ||
+        String(rawPrice).trim() === ""
+      ) {
+        return res.status(400).json({
+          message: "Please provide a price per kg",
+        });
+      }
+
+      const pricePerKg = Number(rawPrice);
+
+      if (
+        !Number.isFinite(pricePerKg) ||
+        pricePerKg < 1 ||
+        pricePerKg > 1000000
+      ) {
+        return res.status(400).json({
+          message: "Price must be between KSh 1 and KSh 1,000,000",
+        });
+      }
+
+      const roundedPrice =
+        Math.round(pricePerKg * 100) / 100;
+
+      const pricing = await prisma.pricingSetting.upsert({
+        where: { id: 1 },
+        update: {
+          pricePerKg: roundedPrice,
+        },
+        create: {
+          id: 1,
+          pricePerKg: roundedPrice,
+          expressMultiplier: 1.5,
+        },
+      });
+
+      return res.status(200).json({
+        message: "Pricing updated successfully",
+        pricing,
+      });
+    } catch (error) {
+      console.error("Update pricing error:", error);
+
+      return res.status(500).json({
+        message: "Unable to update pricing",
       });
     }
   }

@@ -7,6 +7,8 @@ import {
 
 import Login from "./pages/auth/login";
 import Register from "./pages/auth/register";
+import ForgotPassword from "./pages/auth/ForgotPassword";
+import ResetPassword from "./pages/auth/ResetPassword";
 
 import CustomerDashboard from "./pages/auth/Customer/customerDashboard";
 import CreateParcel from "./pages/auth/Customer/CreateParcel";
@@ -75,7 +77,6 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-
         {/* HOME */}
         <Route
           path="/"
@@ -83,14 +84,18 @@ function App() {
         />
 
         {/* AUTHENTICATION */}
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+
+        {/* PASSWORD RESET - PUBLIC ROUTES */}
         <Route
-          path="/login"
-          element={<Login />}
+          path="/forgot-password"
+          element={<ForgotPassword />}
         />
 
         <Route
-          path="/register"
-          element={<Register />}
+          path="/reset-password"
+          element={<ResetPassword />}
         />
 
         {/* CUSTOMER ROUTES */}
@@ -129,15 +134,16 @@ function App() {
             </RoleRoute>
           }
         />
+
         {/* CUSTOMER SUPPORT */}
-<Route
-  path="/customer/support"
-  element={
-    <RoleRoute role="CUSTOMER">
-      <CustomerSupportPage />
-    </RoleRoute>
-  }
-/>
+        <Route
+          path="/customer/support"
+          element={
+            <RoleRoute role="CUSTOMER">
+              <CustomerSupportPage />
+            </RoleRoute>
+          }
+        />
 
         {/* PAYMENT */}
         <Route
@@ -161,7 +167,6 @@ function App() {
 
         {/* ADMIN ROUTES */}
         <Route element={<Adminroute />}>
-
           <Route
             path="/admin/dashboard"
             element={<AdminDashboard />}
@@ -191,7 +196,6 @@ function App() {
             path="/admin/register-driver"
             element={<RegisterDriver />}
           />
-
         </Route>
 
         {/* DELIVERY MANAGEMENT */}
@@ -205,7 +209,6 @@ function App() {
           path="*"
           element={<Navigate to="/login" replace />}
         />
-
       </Routes>
     </BrowserRouter>
   );

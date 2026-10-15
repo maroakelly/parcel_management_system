@@ -1,19 +1,20 @@
+/* Main page */
 .page-container {
   min-height: 100vh;
   padding: 40px;
-  background: #f5f7fb;
+  background: #f3f7f8;
 }
 
 .page-container h1 {
   margin: 0 0 10px;
-  color: #111827;
+  color: #172d46;
   font-size: 34px;
   font-weight: 700;
 }
 
 .page-container > p {
   margin-bottom: 30px;
-  color: #6b7280;
+  color: #71808d;
   font-size: 16px;
 }
 
@@ -27,23 +28,25 @@
 
 .page-container form input {
   flex: 1;
+  min-width: 0;
   height: 52px;
   padding: 0 16px;
-  border: 1px solid #d1d5db;
+  border: 1px solid #e0e8eb;
   border-radius: 10px;
   background: #ffffff !important;
-  color: #111827 !important;
+  color: #172d46 !important;
   font-size: 15px;
   outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .page-container form input::placeholder {
-  color: #9ca3af !important;
+  color: #9aa8b2 !important;
 }
 
 .page-container form input:focus {
-  border-color: #2563eb;
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+  border-color: #287d8e;
+  box-shadow: 0 0 0 3px rgba(40, 125, 142, 0.13);
 }
 
 .page-container form button {
@@ -51,30 +54,36 @@
   padding: 0 25px;
   border: none;
   border-radius: 10px;
-  background: #2563eb;
+  background: #287d8e;
   color: #ffffff;
   font-size: 15px;
   font-weight: 600;
   cursor: pointer;
-  transition: 0.2s ease;
+  transition: background 0.2s ease, transform 0.2s ease;
 }
 
 .page-container form button:hover {
-  background: #1d4ed8;
+  background: #216b7a;
+}
+
+.page-container form button:active {
+  transform: translateY(1px);
 }
 
 .page-container form button:disabled {
-  background: #93c5fd;
+  background: #9bbdc3;
   cursor: not-allowed;
+  transform: none;
 }
 
 /* Error message */
 .page-container > p[style*="red"] {
-  padding: 14px 16px;
   max-width: 700px;
+  padding: 14px 16px;
+  border: 1px solid #f3d1d1;
   border-radius: 10px;
-  background: #fef2f2;
-  color: #dc2626 !important;
+  background: #fff1f1;
+  color: #c03939 !important;
   font-size: 14px;
 }
 
@@ -83,58 +92,63 @@
   max-width: 900px;
   margin-top: 30px;
   padding: 30px;
-  background: #ffffff;
+  border: 1px solid #e0e8eb;
   border-radius: 16px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  background: #ffffff;
+  box-shadow: 0 8px 25px rgba(23, 45, 70, 0.06);
 }
 
 .parcel-details-card h2 {
   margin: 0 0 20px;
-  color: #111827;
+  color: #172d46;
   font-size: 22px;
   font-weight: 700;
 }
 
+/* Parcel information */
 .parcel-info {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
 }
 
 .parcel-info p {
   margin: 0;
   padding: 14px;
+  border: 1px solid #e8eef0;
   border-radius: 10px;
-  background: #f8fafc;
-  color: #4b5563;
+  background: #f6f9fa;
+  color: #596b78;
   font-size: 14px;
+  overflow-wrap: anywhere;
 }
 
 .parcel-info strong {
   display: block;
   margin-bottom: 5px;
-  color: #111827;
+  color: #172d46;
 }
 
-/* Current status */
+/* Current parcel status */
 .current-status {
   margin-top: 25px;
   padding: 20px;
+  border: 1px solid #c8e6e1;
   border-radius: 12px;
-  background: #eff6ff;
-  border: 1px solid #bfdbfe;
+  background: #eaf6f4;
 }
 
 .current-status h3 {
   margin: 0 0 8px;
-  color: #1e3a8a;
+  color: #176b59;
   font-size: 15px;
 }
 
 .current-status span {
-  color: #2563eb;
+  color: #287d8e;
   font-size: 22px;
   font-weight: 700;
+  overflow-wrap: anywhere;
 }
 
 /* Tracking history */
@@ -142,24 +156,30 @@
   margin-top: 30px;
 }
 
+.tracking-history h2 {
+  color: #172d46;
+}
+
 .tracking-item {
   position: relative;
   margin-bottom: 20px;
   padding: 18px 20px;
-  border-left: 4px solid #2563eb;
+  border-left: 4px solid #287d8e;
   border-radius: 0 10px 10px 0;
-  background: #f8fafc;
+  background: #f6f9fa;
 }
 
 .tracking-item strong {
-  color: #111827;
+  color: #172d46;
   font-size: 16px;
+  overflow-wrap: anywhere;
 }
 
 .tracking-item p {
   margin: 6px 0 0;
-  color: #6b7280;
+  color: #71808d;
   font-size: 13px;
+  overflow-wrap: anywhere;
 }
 
 /* Mobile responsive */
@@ -170,6 +190,10 @@
 
   .page-container h1 {
     font-size: 28px;
+  }
+
+  .page-container > p {
+    font-size: 15px;
   }
 
   .page-container form {
@@ -186,5 +210,27 @@
 
   .parcel-details-card {
     padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-container {
+    padding: 16px;
+  }
+
+  .page-container h1 {
+    font-size: 25px;
+  }
+
+  .parcel-details-card {
+    padding: 16px;
+  }
+
+  .parcel-details-card h2 {
+    font-size: 20px;
+  }
+
+  .current-status span {
+    font-size: 19px;
   }
 }

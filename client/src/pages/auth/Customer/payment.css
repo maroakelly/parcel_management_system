@@ -1,57 +1,103 @@
+/* =========================================
+   PAYMENT PAGE
+   Theme: Deep Navy, Teal & Cool Mist
+========================================= */
+
 .payment-page {
   min-height: 100vh;
-  background: #f5f7fb;
+  background: #f3f7f8;
+  color: #263b4d;
+  color-scheme: light;
 }
+
+/* =========================================
+   PAYMENT HEADER
+========================================= */
 
 .payment-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 20px;
   padding: 25px 40px;
-  background: #2563eb;
-  color: white;
+  background: #172d46;
+  color: #ffffff;
+  border-bottom: 3px solid #287d8e;
 }
 
 .payment-header h1 {
   margin: 0;
   font-size: 28px;
+  color: #ffffff;
 }
 
 .payment-header p {
   margin: 5px 0 0;
-  opacity: 0.85;
+  color: #c0cfdb;
+  opacity: 1;
 }
 
 .payment-header button {
   padding: 10px 18px;
-  border: none;
+  border: 1px solid #d4e5e8;
   border-radius: 8px;
-  background: white;
-  color: #2563eb;
+  background: #ffffff;
+  color: #216b7a;
   font-weight: 700;
   cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease,
+    transform 0.2s ease;
+  flex-shrink: 0;
 }
+
+.payment-header button:hover {
+  background: #e5f2f4;
+  color: #174f5b;
+  transform: translateY(-1px);
+}
+
+/* =========================================
+   PAYMENT CONTENT
+========================================= */
 
 .payment-content {
   max-width: 1000px;
   margin: 0 auto;
   padding: 40px 20px;
+  box-sizing: border-box;
 }
+
+/* =========================================
+   PAYMENT CARDS
+========================================= */
 
 .payment-card,
 .payment-history-card {
-  background: white;
+  background: #ffffff;
   padding: 30px;
   margin-bottom: 25px;
+  border: 1px solid #e0e8eb;
   border-radius: 16px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 5px 20px rgba(23, 45, 70, 0.045);
+  box-sizing: border-box;
 }
 
 .payment-card h2,
 .payment-history-card h2 {
   margin-top: 0;
-  color: #1f2937;
+  color: #172d46;
+  font-size: 21px;
 }
+
+.payment-card > p,
+.payment-history-card > p {
+  color: #71808d;
+  line-height: 1.6;
+}
+
+/* =========================================
+   PAYMENT FORM FIELDS
+========================================= */
 
 .payment-field {
   margin-top: 25px;
@@ -60,8 +106,9 @@
 .payment-field label {
   display: block;
   margin-bottom: 8px;
-  color: #374151;
+  color: #354b5b;
   font-weight: 700;
+  font-size: 13px;
 }
 
 .payment-field select,
@@ -69,36 +116,62 @@
   width: 100%;
   box-sizing: border-box;
   padding: 13px 15px;
-  border: 1px solid #d1d5db;
+  border: 1px solid #cbd9df;
   border-radius: 9px;
+  background: #ffffff;
+  color: #263b4d;
+  font-family: inherit;
   font-size: 15px;
   outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .payment-field select:focus,
 .payment-field input:focus {
-  border-color: #2563eb;
+  border-color: #287d8e;
+  box-shadow: 0 0 0 3px rgba(40, 125, 142, 0.14);
 }
+
+.payment-field input::placeholder {
+  color: #81909b;
+  opacity: 1;
+}
+
+.payment-field select option {
+  background: #ffffff;
+  color: #263b4d;
+}
+
+/* =========================================
+   PAYMENT AMOUNT
+========================================= */
 
 .payment-amount {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 15px;
   margin-top: 20px;
   padding: 18px;
-  background: #eff6ff;
+  background: #eaf4f6;
+  border: 1px solid #d2e7eb;
   border-radius: 10px;
 }
 
 .payment-amount span {
-  color: #475569;
+  color: #526b78;
   font-weight: 600;
 }
 
 .payment-amount strong {
-  color: #2563eb;
+  color: #216b7a;
   font-size: 22px;
+  overflow-wrap: anywhere;
 }
+
+/* =========================================
+   PAYMENT METHODS
+========================================= */
 
 .payment-methods {
   display: grid;
@@ -112,20 +185,26 @@
   align-items: flex-start;
   gap: 6px;
   padding: 20px;
-  border: 2px solid #e5e7eb;
+  border: 2px solid #e0e8eb;
   border-radius: 12px;
-  background: white;
+  background: #ffffff;
+  color: #263b4d;
   cursor: pointer;
   text-align: left;
+  transition: border-color 0.2s ease, background 0.2s ease,
+    box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 .payment-method:hover {
-  border-color: #93c5fd;
+  border-color: #8bbbc4;
+  background: #f8fbfc;
+  transform: translateY(-1px);
 }
 
 .payment-method.active {
-  border-color: #2563eb;
-  background: #eff6ff;
+  border-color: #287d8e;
+  background: #edf6f7;
+  box-shadow: 0 0 0 1px rgba(40, 125, 142, 0.08);
 }
 
 .payment-method span {
@@ -133,13 +212,18 @@
 }
 
 .payment-method strong {
-  color: #1f2937;
+  color: #172d46;
   font-size: 16px;
 }
 
 .payment-method small {
-  color: #6b7280;
+  color: #71808d;
+  line-height: 1.5;
 }
+
+/* =========================================
+   PAY BUTTON
+========================================= */
 
 .pay-button {
   width: 100%;
@@ -147,21 +231,33 @@
   padding: 14px;
   border: none;
   border-radius: 9px;
-  background: #2563eb;
-  color: white;
+  background: #287d8e;
+  color: #ffffff;
   font-size: 16px;
   font-weight: 700;
   cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .pay-button:hover {
-  background: #1d4ed8;
+  background: #216b7a;
+  box-shadow: 0 5px 14px rgba(40, 125, 142, 0.18);
+}
+
+.pay-button:active {
+  transform: translateY(1px);
 }
 
 .pay-button:disabled {
   opacity: 0.6;
   cursor: not-allowed;
+  box-shadow: none;
 }
+
+/* =========================================
+   PAYMENT ERROR AND SUCCESS
+========================================= */
 
 .payment-error,
 .payment-success {
@@ -169,17 +265,24 @@
   padding: 14px 18px;
   border-radius: 9px;
   font-weight: 600;
+  line-height: 1.5;
 }
 
 .payment-error {
-  background: #fee2e2;
-  color: #991b1b;
+  background: #fbe9e9;
+  color: #963f49;
+  border: 1px solid #f1c9cc;
 }
 
 .payment-success {
-  background: #dcfce7;
-  color: #166534;
+  background: #e8f6f1;
+  color: #176b59;
+  border: 1px solid #b8e4d5;
 }
+
+/* =========================================
+   NO PARCELS STATE
+========================================= */
 
 .no-parcels {
   text-align: center;
@@ -187,11 +290,12 @@
 }
 
 .no-parcels h3 {
-  color: #1f2937;
+  color: #172d46;
 }
 
 .no-parcels p {
-  color: #6b7280;
+  color: #71808d;
+  line-height: 1.6;
 }
 
 .no-parcels button {
@@ -199,17 +303,31 @@
   padding: 11px 20px;
   border: none;
   border-radius: 8px;
-  background: #2563eb;
-  color: white;
+  background: #287d8e;
+  color: #ffffff;
   font-weight: 700;
   cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
 }
 
+.no-parcels button:hover {
+  background: #216b7a;
+  transform: translateY(-1px);
+}
+
+/* =========================================
+   EMPTY PAYMENT HISTORY
+========================================= */
+
 .empty-payment {
-  color: #6b7280;
+  color: #71808d;
   text-align: center;
   padding: 20px;
 }
+
+/* =========================================
+   PAYMENT HISTORY
+========================================= */
 
 .payment-history-list {
   display: flex;
@@ -223,14 +341,22 @@
   align-items: center;
   gap: 20px;
   padding: 18px;
-  border: 1px solid #e5e7eb;
+  border: 1px solid #e0e8eb;
   border-radius: 10px;
+  background: #ffffff;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.payment-history-item:hover {
+  border-color: #c3dce1;
+  background: #fbfdfd;
 }
 
 .payment-history-item > div {
   display: flex;
   flex-direction: column;
   gap: 6px;
+  min-width: 0;
 }
 
 .payment-history-item > div:last-child {
@@ -238,13 +364,19 @@
 }
 
 .payment-history-item strong {
-  color: #1f2937;
+  color: #172d46;
+  overflow-wrap: anywhere;
 }
 
 .payment-history-item span {
-  color: #6b7280;
+  color: #71808d;
   font-size: 14px;
+  overflow-wrap: anywhere;
 }
+
+/* =========================================
+   PAYMENT STATUS BADGES
+========================================= */
 
 .payment-status {
   display: inline-block;
@@ -252,40 +384,56 @@
   border-radius: 20px;
   font-weight: 700;
   font-size: 12px !important;
+  white-space: nowrap;
 }
 
 .payment-status.pending {
-  background: #fef3c7;
-  color: #92400e !important;
+  background: #fff0d8;
+  color: #8b5a16 !important;
 }
 
 .payment-status.paid {
-  background: #dcfce7;
-  color: #166534 !important;
+  background: #ddf2ee;
+  color: #176b59 !important;
 }
 
 .payment-status.failed {
-  background: #fee2e2;
-  color: #991b1b !important;
+  background: #fbe5e6;
+  color: #963f49 !important;
 }
 
 .payment-status.cancelled {
-  background: #e5e7eb;
-  color: #374151 !important;
+  background: #e8edf1;
+  color: #526574 !important;
 }
 
 .payment-status.refunded {
-  background: #ede9fe;
-  color: #5b21b6 !important;
+  background: #eae5f8;
+  color: #604a96 !important;
 }
+
+/* =========================================
+   RESPONSIVE DESIGN
+========================================= */
 
 @media (max-width: 700px) {
   .payment-header {
     padding: 20px;
+    gap: 15px;
   }
 
   .payment-header h1 {
     font-size: 23px;
+  }
+
+  .payment-header p {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .payment-header button {
+    padding: 9px 12px;
+    font-size: 12px;
   }
 
   .payment-content {
@@ -308,5 +456,46 @@
 
   .payment-history-item > div:last-child {
     align-items: flex-start;
+  }
+}
+
+@media (max-width: 420px) {
+  .payment-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .payment-header button {
+    align-self: flex-start;
+  }
+
+  .payment-amount {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .payment-amount strong {
+    font-size: 21px;
+  }
+
+  .payment-card,
+  .payment-history-card {
+    padding: 17px;
+  }
+}
+
+/* =========================================
+   ACCESSIBILITY
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .payment-page *,
+  .payment-page *::before,
+  .payment-page *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

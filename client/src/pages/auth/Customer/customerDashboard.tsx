@@ -196,8 +196,8 @@ function CustomerDashboard() {
           </div>
 
           <div>
-            <h2>Parcel Management System</h2>
-            <span>Management System</span>
+            <h2>PARCEL FLOW</h2>
+            <span>Parcel System</span>
           </div>
         </div>
 
@@ -701,7 +701,7 @@ function CustomerDashboard() {
 
             <p>
               Your parcel information is securely
-              managed by Parcel Management System.
+              managed by Parcel Flow.
             </p>
           </div>
         </div>

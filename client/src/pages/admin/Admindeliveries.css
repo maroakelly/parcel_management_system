@@ -1,175 +1,259 @@
+/* =========================
+   ADMIN DELIVERIES PAGE
+========================= */
+
 .admin-deliveries-page {
   min-height: 100vh;
-  background: #f5f7fb;
   padding-bottom: 40px;
+  background: #f3f7f8;
 }
+
+/* =========================
+   HEADER
+========================= */
 
 .admin-deliveries-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 20px;
   padding: 25px 40px;
-  background: #2563eb;
-  color: white;
+  background: #172d46;
+  color: #ffffff;
+  border-bottom: 4px solid #287d8e;
 }
 
 .admin-deliveries-header h1 {
   margin: 0;
+  color: #ffffff;
   font-size: 28px;
+  font-weight: 700;
 }
 
 .admin-deliveries-header p {
   margin: 6px 0 0;
-  opacity: 0.9;
+  color: #d4e0e8;
+  opacity: 0.95;
 }
 
 .back-dashboard-button {
-  border: none;
-  border-radius: 8px;
   padding: 11px 18px;
-  background: white;
-  color: #2563eb;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 8px;
+  background: #ffffff;
+  color: #172d46;
   font-weight: 700;
   cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
 }
 
 .back-dashboard-button:hover {
-  background: #eff6ff;
+  background: #ddf2ee;
+  color: #216b7a;
 }
+
+/* =========================
+   ERROR MESSAGE
+========================= */
 
 .admin-deliveries-error {
   margin: 25px 40px;
   padding: 15px;
+  border: 1px solid #f3d1d1;
   border-radius: 8px;
-  background: #fee2e2;
-  color: #991b1b;
+  background: #fff1f1;
+  color: #b83232;
 }
+
+/* =========================
+   DELIVERY SUMMARY CARDS
+========================= */
 
 .delivery-summary-cards {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 20px;
   padding: 30px 40px 20px;
 }
 
 .delivery-summary-card {
-  background: white;
+  min-width: 0;
   padding: 22px;
+  border: 1px solid #e0e8eb;
   border-radius: 14px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  background: #ffffff;
+  box-shadow: 0 6px 20px rgba(23, 45, 70, 0.06);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.delivery-summary-card:hover {
+  box-shadow: 0 10px 25px rgba(23, 45, 70, 0.1);
+  transform: translateY(-2px);
 }
 
 .delivery-summary-card span {
   display: block;
-  color: #64748b;
   margin-bottom: 10px;
+  color: #71808d;
+  font-size: 14px;
 }
 
 .delivery-summary-card strong {
+  color: #172d46;
   font-size: 30px;
-  color: #1e293b;
+  font-weight: 700;
 }
+
+/* =========================
+   SEARCH AND FILTER CONTROLS
+========================= */
 
 .delivery-controls {
   display: flex;
-  gap: 20px;
   align-items: end;
-  padding: 20px 40px;
-  background: white;
+  gap: 20px;
   margin: 0 40px 20px;
+  padding: 20px;
+  border: 1px solid #e0e8eb;
   border-radius: 14px;
+  background: #ffffff;
+  box-shadow: 0 4px 15px rgba(23, 45, 70, 0.04);
 }
 
 .delivery-search {
   flex: 1;
+  min-width: 0;
 }
 
 .delivery-search label,
 .delivery-filter label {
   display: block;
   margin-bottom: 7px;
+  color: #172d46;
+  font-size: 14px;
   font-weight: 600;
-  color: #334155;
 }
 
 .delivery-search input,
 .delivery-filter select {
-  width: 100%;
   box-sizing: border-box;
+  width: 100%;
+  min-height: 44px;
   padding: 12px;
-  border: 1px solid #cbd5e1;
+  border: 1px solid #e0e8eb;
   border-radius: 8px;
+  background: #ffffff;
+  color: #172d46;
   outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.delivery-search input::placeholder {
+  color: #9aa8b2;
 }
 
 .delivery-search input:focus,
 .delivery-filter select:focus {
-  border-color: #2563eb;
+  border-color: #287d8e;
+  box-shadow: 0 0 0 3px rgba(40, 125, 142, 0.12);
 }
 
 .delivery-filter {
   width: 220px;
+  flex-shrink: 0;
 }
 
 .refresh-deliveries-button {
   padding: 12px 20px;
   border: none;
   border-radius: 8px;
-  background: #2563eb;
-  color: white;
+  background: #287d8e;
+  color: #ffffff;
   font-weight: 700;
   cursor: pointer;
+  transition: background 0.2s ease;
 }
 
 .refresh-deliveries-button:hover {
-  background: #1d4ed8;
+  background: #216b7a;
 }
+
+/* =========================
+   RESULT COUNT
+========================= */
 
 .delivery-result-count {
   margin: 0 40px 15px;
-  color: #64748b;
+  color: #71808d;
+  font-size: 14px;
 }
+
+/* =========================
+   DELIVERIES TABLE
+========================= */
 
 .admin-deliveries-table-wrapper {
   margin: 0 40px;
-  background: white;
-  border-radius: 14px;
   overflow-x: auto;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e0e8eb;
+  border-radius: 14px;
+  background: #ffffff;
+  box-shadow: 0 6px 20px rgba(23, 45, 70, 0.06);
 }
 
 .admin-deliveries-table {
   width: 100%;
-  border-collapse: collapse;
   min-width: 1000px;
+  border-collapse: collapse;
 }
 
 .admin-deliveries-table th,
 .admin-deliveries-table td {
   padding: 15px;
   text-align: left;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid #e7edef;
 }
 
 .admin-deliveries-table th {
-  background: #f8fafc;
-  color: #334155;
+  background: #f2f6f8;
+  color: #172d46;
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
 }
 
 .admin-deliveries-table td {
-  color: #475569;
+  color: #596b78;
+  font-size: 14px;
+}
+
+.admin-deliveries-table tbody tr {
+  transition: background 0.15s ease;
+}
+
+.admin-deliveries-table tbody tr:hover {
+  background: #f7fafb;
+}
+
+.admin-deliveries-table tbody tr:last-child td {
+  border-bottom: none;
 }
 
 .admin-deliveries-table small {
   display: block;
   margin-top: 4px;
-  color: #94a3b8;
+  color: #8b9aa5;
+  overflow-wrap: anywhere;
 }
 
 .unassigned-driver {
-  color: #dc2626;
+  color: #b83232;
   font-weight: 600;
 }
+
+/* =========================
+   DELIVERY TYPE BADGES
+========================= */
 
 .delivery-type,
 .delivery-status {
@@ -178,174 +262,229 @@
   border-radius: 20px;
   font-size: 12px;
   font-weight: 700;
+  white-space: nowrap;
 }
 
 .delivery-type.standard {
-  background: #dbeafe;
-  color: #1d4ed8;
+  background: #e4edf7;
+  color: #315c82;
 }
 
 .delivery-type.express {
-  background: #fef3c7;
-  color: #92400e;
+  background: #fff0d8;
+  color: #8b5a16;
 }
 
+/* =========================
+   DELIVERY STATUS BADGES
+========================= */
+
 .delivery-status.pending {
-  background: #fef3c7;
-  color: #92400e;
+  background: #fff0d8;
+  color: #8b5a16;
 }
 
 .delivery-status.assigned {
-  background: #e0e7ff;
-  color: #3730a3;
+  background: #e8eafb;
+  color: #4b5094;
 }
 
 .delivery-status.picked_up,
 .delivery-status.in_transit,
 .delivery-status.out_for_delivery {
-  background: #dbeafe;
-  color: #1d4ed8;
+  background: #dceff3;
+  color: #216b7a;
 }
 
 .delivery-status.delivered {
-  background: #dcfce7;
-  color: #166534;
+  background: #ddf2ee;
+  color: #176b59;
 }
 
 .delivery-status.delivery_failed,
 .delivery-status.cancelled {
-  background: #fee2e2;
-  color: #991b1b;
+  background: #fff1f1;
+  color: #b83232;
 }
 
 .delivery-status.rescheduled,
 .delivery-status.returned {
-  background: #f3e8ff;
-  color: #7e22ce;
+  background: #f0e8f8;
+  color: #75469a;
 }
+
+/* =========================
+   MANAGE DELIVERY BUTTON
+========================= */
 
 .manage-delivery-button {
   padding: 9px 14px;
   border: none;
   border-radius: 7px;
-  background: #2563eb;
-  color: white;
+  background: #287d8e;
+  color: #ffffff;
   font-weight: 700;
   cursor: pointer;
+  transition: background 0.2s ease;
 }
 
 .manage-delivery-button:hover {
-  background: #1d4ed8;
+  background: #216b7a;
 }
+
+/* =========================
+   EMPTY / LOADING MESSAGE
+========================= */
 
 .admin-deliveries-message {
   margin: 40px;
   padding: 50px;
-  text-align: center;
-  background: white;
+  border: 1px solid #e0e8eb;
   border-radius: 14px;
+  background: #ffffff;
+  color: #71808d;
+  text-align: center;
 }
+
+/* =========================
+   DELIVERY MANAGEMENT MODAL
+========================= */
 
 .delivery-modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(15, 23, 42, 0.65);
+  z-index: 1000;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
-  z-index: 1000;
   overflow-y: auto;
+  padding: 20px;
+  background: rgba(17, 35, 54, 0.68);
 }
 
 .delivery-modal {
   width: min(850px, 100%);
   max-height: 90vh;
   overflow-y: auto;
-  background: white;
+  border: 1px solid #e0e8eb;
   border-radius: 16px;
+  background: #ffffff;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
 }
+
+/* Modal header */
 
 .delivery-modal-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 15px;
   padding: 22px 25px;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid #e0e8eb;
+  background: #f8fafb;
 }
 
 .delivery-modal-header h2 {
   margin: 0;
-  color: #1e293b;
+  color: #172d46;
+  font-size: 22px;
 }
 
 .delivery-modal-header p {
   margin: 5px 0 0;
-  color: #64748b;
+  color: #71808d;
 }
 
 .close-delivery-modal {
+  flex-shrink: 0;
+  padding: 2px 8px;
   border: none;
+  border-radius: 8px;
   background: transparent;
+  color: #71808d;
   font-size: 30px;
   cursor: pointer;
-  color: #64748b;
+  transition: background 0.2s ease, color 0.2s ease;
 }
+
+.close-delivery-modal:hover {
+  background: #eaf0f2;
+  color: #172d46;
+}
+
+/* =========================
+   DELIVERY DETAILS
+========================= */
 
 .delivery-details {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 18px;
   padding: 25px;
 }
 
 .delivery-details div {
+  min-width: 0;
   padding: 15px;
-  background: #f8fafc;
+  border: 1px solid #e8eef0;
   border-radius: 10px;
+  background: #f6f9fa;
 }
 
 .delivery-details span,
 .delivery-addresses span {
   display: block;
-  color: #64748b;
-  font-size: 13px;
   margin-bottom: 5px;
+  color: #71808d;
+  font-size: 13px;
 }
 
 .delivery-details strong {
-  color: #1e293b;
+  color: #172d46;
+  overflow-wrap: anywhere;
 }
+
+/* =========================
+   DELIVERY ADDRESSES
+========================= */
 
 .delivery-addresses {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 18px;
   padding: 0 25px 25px;
 }
 
 .delivery-addresses div {
+  min-width: 0;
   padding: 15px;
-  background: #f8fafc;
+  border: 1px solid #e8eef0;
   border-radius: 10px;
+  background: #f6f9fa;
 }
 
 .delivery-addresses p {
   margin: 0;
-  color: #334155;
+  color: #435563;
+  overflow-wrap: anywhere;
 }
+
+/* =========================
+   DELIVERY MANAGEMENT SECTION
+========================= */
 
 .delivery-management-section {
   margin: 0 25px 20px;
   padding: 20px;
-  border: 1px solid #e2e8f0;
+  border: 1px solid #e0e8eb;
   border-radius: 12px;
+  background: #ffffff;
 }
 
 .delivery-management-section h3 {
   margin-top: 0;
-  color: #1e293b;
+  color: #172d46;
+  font-size: 18px;
 }
 
 .delivery-driver-row {
@@ -355,37 +494,73 @@
 
 .delivery-driver-row select,
 .delivery-status-select {
+  box-sizing: border-box;
+  min-width: 0;
   flex: 1;
   padding: 11px;
-  border: 1px solid #cbd5e1;
+  border: 1px solid #e0e8eb;
   border-radius: 8px;
+  background: #ffffff;
+  color: #172d46;
+  outline: none;
 }
 
-.delivery-driver-row button,
-.update-delivery-status-button {
+.delivery-driver-row select:focus,
+.delivery-status-select:focus {
+  border-color: #287d8e;
+  box-shadow: 0 0 0 3px rgba(40, 125, 142, 0.12);
+}
+
+/* Assign driver */
+
+.delivery-driver-row button {
   padding: 11px 18px;
   border: none;
   border-radius: 8px;
-  background: #16a34a;
-  color: white;
+  background: #287d8e;
+  color: #ffffff;
   font-weight: 700;
   cursor: pointer;
+  transition: background 0.2s ease;
 }
+
+.delivery-driver-row button:hover {
+  background: #216b7a;
+}
+
+/* Update delivery status */
 
 .update-delivery-status-button {
   margin-top: 12px;
-  background: #2563eb;
+  padding: 11px 18px;
+  border: none;
+  border-radius: 8px;
+  background: #287d8e;
+  color: #ffffff;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.update-delivery-status-button:hover {
+  background: #216b7a;
 }
 
 .delivery-driver-row button:disabled,
 .update-delivery-status-button:disabled {
-  opacity: 0.6;
+  background: #9bbdc3;
+  opacity: 0.7;
   cursor: not-allowed;
 }
 
+/* =========================
+   MODAL FOOTER
+========================= */
+
 .delivery-modal-footer {
   padding: 20px 25px;
-  border-top: 1px solid #e5e7eb;
+  border-top: 1px solid #e0e8eb;
+  background: #f8fafb;
   text-align: right;
 }
 
@@ -393,15 +568,24 @@
   padding: 10px 18px;
   border: none;
   border-radius: 8px;
-  background: #64748b;
-  color: white;
+  background: #71808d;
+  color: #ffffff;
   font-weight: 700;
   cursor: pointer;
+  transition: background 0.2s ease;
 }
+
+.close-delivery-button:hover {
+  background: #596b78;
+}
+
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
 
 @media (max-width: 900px) {
   .delivery-summary-cards {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .delivery-controls {
@@ -412,20 +596,37 @@
   .delivery-filter {
     width: 100%;
   }
+
+  .refresh-deliveries-button {
+    align-self: flex-start;
+  }
 }
 
 @media (max-width: 600px) {
   .admin-deliveries-header {
+    flex-direction: column;
+    align-items: flex-start;
     padding: 20px;
+  }
+
+  .admin-deliveries-header h1 {
+    font-size: 24px;
+  }
+
+  .admin-deliveries-error {
+    margin: 20px;
   }
 
   .delivery-summary-cards {
     grid-template-columns: 1fr;
+    gap: 15px;
     padding: 20px;
   }
 
   .delivery-controls {
+    gap: 15px;
     margin: 0 20px 20px;
+    padding: 16px;
   }
 
   .admin-deliveries-table-wrapper {
@@ -436,8 +637,73 @@
     margin: 0 20px 15px;
   }
 
-  .delivery-details,
+  .admin-deliveries-message {
+    margin: 20px;
+    padding: 30px 20px;
+  }
+
+  .delivery-modal-overlay {
+    align-items: flex-start;
+    padding: 12px;
+  }
+
+  .delivery-modal {
+    max-height: 95vh;
+    border-radius: 12px;
+  }
+
+  .delivery-modal-header {
+    padding: 18px;
+  }
+
+  .delivery-modal-header h2 {
+    font-size: 19px;
+  }
+
+  .delivery-details {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 18px;
+  }
+
   .delivery-addresses {
     grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 0 18px 18px;
+  }
+
+  .delivery-management-section {
+    margin: 0 18px 18px;
+    padding: 16px;
+  }
+
+  .delivery-driver-row {
+    flex-direction: column;
+  }
+
+  .delivery-driver-row button,
+  .update-delivery-status-button {
+    width: 100%;
+  }
+
+  .delivery-modal-footer {
+    padding: 16px 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .delivery-summary-card,
+  .back-dashboard-button,
+  .refresh-deliveries-button,
+  .manage-delivery-button,
+  .close-delivery-modal,
+  .delivery-driver-row button,
+  .update-delivery-status-button,
+  .close-delivery-button {
+    transition: none;
+  }
+
+  .delivery-summary-card:hover {
+    transform: none;
   }
 }

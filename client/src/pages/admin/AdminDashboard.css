@@ -1,152 +1,246 @@
+/* =========================
+   ADMIN DASHBOARD
+========================= */
+
 .admin-dashboard {
   min-height: 100vh;
-  background: #f5f7fb;
+  background: #f3f7f8;
 }
+
+/* =========================
+   ADMIN HEADER
+========================= */
 
 .admin-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 20px;
   padding: 25px 40px;
-  background: #2563eb;
-  color: white;
+  background: #172d46;
+  color: #ffffff;
+  border-bottom: 4px solid #287d8e;
 }
 
 .admin-header h1 {
   margin: 0;
+  color: #ffffff;
   font-size: 28px;
+  font-weight: 700;
 }
 
 .admin-header p {
   margin: 5px 0 0;
-  opacity: 0.85;
+  color: #d4e0e8;
+  opacity: 0.95;
 }
 
 .admin-header button {
   padding: 10px 18px;
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.35);
   border-radius: 8px;
-  background: white;
-  color: #2563eb;
+  background: #ffffff;
+  color: #172d46;
   font-weight: 700;
   cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
 }
+
+.admin-header button:hover {
+  background: #ddf2ee;
+  color: #216b7a;
+}
+
+/* =========================
+   ADMIN CONTENT
+========================= */
 
 .admin-content {
   padding: 40px;
 }
 
 .admin-content h2 {
-  margin-bottom: 30px;
-  color: #1f2937;
+  margin: 0 0 30px;
+  color: #172d46;
+  font-size: 24px;
+  font-weight: 700;
 }
+
+/* =========================
+   ADMIN CARDS
+========================= */
 
 .admin-cards {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 20px;
 }
 
 .admin-card {
-  background: white;
+  min-width: 0;
   padding: 25px;
+  border: 1px solid #e0e8eb;
   border-radius: 15px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  background: #ffffff;
+  box-shadow: 0 8px 25px rgba(23, 45, 70, 0.06);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.admin-card:hover {
+  box-shadow: 0 12px 28px rgba(23, 45, 70, 0.1);
+  transform: translateY(-2px);
 }
 
 .admin-card h3 {
   margin-top: 0;
-  color: #1f2937;
+  color: #172d46;
+  font-size: 18px;
+  font-weight: 700;
 }
 
 .admin-card p {
-  color: #6b7280;
+  color: #71808d;
+  line-height: 1.6;
 }
 
+/* Standard admin card buttons */
 .admin-card button {
   width: 100%;
   padding: 11px;
   border: none;
   border-radius: 8px;
-  background: #2563eb;
-  color: white;
+  background: #287d8e;
+  color: #ffffff;
   font-weight: 600;
   cursor: pointer;
+  transition: background 0.2s ease;
 }
 
 .admin-card button:hover {
-  background: #1d4ed8;
+  background: #216b7a;
 }
 
-@media (max-width: 900px) {
+.admin-card button:disabled {
+  background: #9bbdc3;
+  cursor: not-allowed;
+}
+
+/* =========================
+   REGISTER DRIVER BUTTON
+========================= */
+
+.register-driver-dashboard-button {
+  display: block;
+  margin-top: 10px;
+  width: 100%;
+  padding: 11px 15px;
+  border: none;
+  border-radius: 8px;
+  background: #287d8e;
+  color: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.register-driver-dashboard-button:hover {
+  background: #216b7a;
+}
+
+/* =========================
+   DELIVERY MANAGEMENT CARD
+========================= */
+
+.delivery-admin-card {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.delivery-admin-card h3 {
+  display: block !important;
+  visibility: visible !important;
+  color: #172d46;
+}
+
+.delivery-admin-card p {
+  display: block !important;
+  visibility: visible !important;
+  color: #71808d;
+}
+
+.delivery-dashboard-button {
+  display: inline-block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  padding: 11px 18px;
+  border: none;
+  border-radius: 8px;
+  background: #287d8e;
+  color: #ffffff;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.delivery-dashboard-button:hover {
+  background: #216b7a;
+}
+
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
+
+@media (max-width: 1100px) {
   .admin-cards {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 600px) {
   .admin-header {
+    flex-direction: column;
+    align-items: flex-start;
     padding: 20px;
+  }
+
+  .admin-header h1 {
+    font-size: 24px;
+  }
+
+  .admin-header button {
+    align-self: flex-start;
   }
 
   .admin-content {
     padding: 20px;
   }
 
+  .admin-content h2 {
+    font-size: 21px;
+    margin-bottom: 22px;
+  }
+
   .admin-cards {
     grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .admin-card {
+    padding: 20px;
   }
 }
-.register-driver-dashboard-button {
-  margin-top: 10px;
-  width: 100%;
-  padding: 11px 15px;
-  border: none;
-  border-radius: 8px;
-  background: #16a34a;
-  color: white;
-  font-weight: 600;
-  cursor: pointer;
-}
 
-.register-driver-dashboard-button:hover {
-  background: #15803d;
-}
-/* =========================
-DELIVERY MANAGEMENT CARD
-========================= */
+@media (prefers-reduced-motion: reduce) {
+  .admin-card,
+  .admin-header button,
+  .admin-card button,
+  .register-driver-dashboard-button,
+  .delivery-dashboard-button {
+    transition: none;
+  }
 
-.delivery-admin-card {
-display: block !important;
-visibility: visible !important;
-opacity: 1 !important;
-}
-
-.delivery-admin-card h3 {
-display: block !important;
-visibility: visible !important;
-color: #172033;
-}
-
-.delivery-admin-card p {
-display: block !important;
-visibility: visible !important;
-color: #64748b;
-}
-
-.delivery-dashboard-button {
-display: inline-block !important;
-visibility: visible !important;
-opacity: 1 !important;
-padding: 11px 18px;
-border: none;
-border-radius: 8px;
-background: #2563eb;
-color: #ffffff;
-font-weight: 700;
-cursor: pointer;
-}
-
-.delivery-dashboard-button:hover {
-background: #1d4ed8;
+  .admin-card:hover {
+    transform: none;
+  }
 }

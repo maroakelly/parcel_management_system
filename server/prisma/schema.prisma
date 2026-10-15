@@ -8,20 +8,21 @@ datasource db {
 }
 
 model User {
-  id              Int            @id @default(autoincrement())
-  name            String
-  email           String         @unique
-  password        String
-  phone           String?
-  role            Role           @default(CUSTOMER)
-  status          UserStatus     @default(ACTIVE)
-  createdAt       DateTime       @default(now())
-  updatedAt       DateTime       @updatedAt
-  auditLogs       AuditLog[]
-  driver          Driver?
-  notifications   Notification[]
-  customerParcels Parcel[]       @relation("CustomerParcels")
-  payments        Payment[]      @relation("UserPayments")
+  id                  Int                  @id @default(autoincrement())
+  name                String
+  email               String               @unique
+  password            String
+  phone               String?
+  role                Role                 @default(CUSTOMER)
+  status              UserStatus           @default(ACTIVE)
+  createdAt           DateTime             @default(now())
+  updatedAt           DateTime             @updatedAt
+  auditLogs           AuditLog[]
+  driver              Driver?
+  notifications       Notification[]
+  customerParcels     Parcel[]             @relation("CustomerParcels")
+  passwordResetTokens PasswordResetToken[]
+  payments            Payment[]            @relation("UserPayments")
 }
 
 model Driver {
@@ -55,6 +56,7 @@ model Parcel {
   status          ParcelStatus          @default(PENDING)
   createdAt       DateTime              @default(now())
   updatedAt       DateTime              @updatedAt
+  receiverEmail   String?
   notifications   Notification[]
   customer        User                  @relation("CustomerParcels", fields: [customerId], references: [id], onDelete: Cascade)
   driver          Driver?               @relation("DriverParcels", fields: [driverId], references: [id])
@@ -107,11 +109,12 @@ model Notification {
   @@index([userId])
   @@index([parcelId])
 }
+
 model PricingSetting {
-  id               Int      @id @default(1)
-  pricePerKg       Float    @default(1)
-  expressMultiplier Float   @default(1.5)
-  updatedAt        DateTime @updatedAt
+  id                Int      @id @default(1)
+  pricePerKg        Float    @default(1)
+  expressMultiplier Float    @default(1.5)
+  updatedAt         DateTime @updatedAt
 }
 
 model AuditLog {
@@ -126,6 +129,19 @@ model AuditLog {
   @@index([userId])
   @@index([entity])
   @@index([entityId])
+}
+
+model PasswordResetToken {
+  id        Int       @id @default(autoincrement())
+  userId    Int
+  tokenHash String    @unique
+  expiresAt DateTime
+  usedAt    DateTime?
+  createdAt DateTime  @default(now())
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([expiresAt])
 }
 
 enum Role {

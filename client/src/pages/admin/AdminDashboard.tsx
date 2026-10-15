@@ -173,7 +173,7 @@ export default function AdminDashboard() {
       <header className="admin-header">
         <div>
           <h1>Admin Dashboard</h1>
-          <p>Parcel Management System</p>
+          <p>PARCEL FLOW</p>
         </div>
 
         <button onClick={handleLogout}>Logout</button>

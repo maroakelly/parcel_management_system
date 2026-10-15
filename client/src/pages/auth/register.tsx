@@ -159,7 +159,7 @@ export default function Register() {
           </div>
 
           <h1>
-            Parcel Management System
+            PARCEL FLOW
           </h1>
 
           <p>

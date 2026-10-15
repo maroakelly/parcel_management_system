@@ -104,8 +104,8 @@ export default function CustomerSupportPage() {
         <div className="sidebar-logo">
           <div className="sidebar-logo-icon">📦</div>
           <div>
-            <h2>Parcel Management System</h2>
-            <span>Management System</span>
+            <h2>PARCEL FLOW</h2>
+            <span>Parcel System</span>
           </div>
         </div>
 

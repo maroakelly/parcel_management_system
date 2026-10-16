@@ -8,6 +8,8 @@ import parcelRoutes from "./routes/parcelRoutes";
 import adminRoutes from "./routes/adminroutes";
 import paymentRoutes from "./routes/paymentRoutes";
 import aiRoutes from "./routes/aiRoutes";
+import driverRoutes from "./routes/driverRoutes";
+
 
 dotenv.config();
 
@@ -50,5 +52,5 @@ app.use("/api", parcelRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api", paymentRoutes);
 app.use("/api/ai", aiRoutes);
-
+app.use("/api/driver", driverRoutes);
 export default app;

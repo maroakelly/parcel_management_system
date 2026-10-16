@@ -1,0 +1,105 @@
+.driver-login-page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  box-sizing: border-box;
+  background: #f3f7f8;
+}
+
+.driver-login-card {
+  width: 100%;
+  max-width: 420px;
+  box-sizing: border-box;
+  padding: 34px;
+  border: 1px solid #e0e8eb;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 12px 35px rgba(23, 45, 70, 0.09);
+}
+
+.driver-login-brand {
+  margin-bottom: 24px;
+  color: #287d8e;
+  font-size: 23px;
+  font-weight: 800;
+}
+
+.driver-login-card h1 {
+  margin: 0 0 8px;
+  color: #172d46;
+}
+
+.driver-login-card > p {
+  margin-bottom: 26px;
+  color: #71808d;
+  line-height: 1.5;
+}
+
+.driver-login-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.driver-login-card label {
+  margin-top: 8px;
+  color: #172d46;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.driver-login-card input {
+  width: 100%;
+  min-height: 46px;
+  box-sizing: border-box;
+  padding: 11px 13px;
+  border: 1px solid #d5e0e4;
+  border-radius: 9px;
+  background: #fff;
+  color: #172d46;
+  font-size: 15px;
+}
+
+.driver-login-card input:focus {
+  outline: 3px solid rgba(40, 125, 142, 0.14);
+  border-color: #287d8e;
+}
+
+.driver-login-card button {
+  min-height: 47px;
+  margin-top: 14px;
+  border: none;
+  border-radius: 9px;
+  background: #287d8e;
+  color: white;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.driver-login-card button:hover {
+  background: #216b7a;
+}
+
+.driver-login-card button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.driver-login-card > a {
+  display: block;
+  margin-top: 22px;
+  color: #287d8e;
+  text-align: center;
+  text-decoration: none;
+}
+
+.driver-login-error {
+  margin: 8px 0 0;
+  padding: 11px;
+  border-radius: 8px;
+  background: #fff0f0;
+  color: #a52b2b;
+  font-size: 13px;
+}

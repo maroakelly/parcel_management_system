@@ -28,6 +28,7 @@ import RegisterDriver from "./pages/admin/Registerdriver";
 import CustomerSupportPage from "./pages/auth/Customer/CustomerSupportPage";
 
 import Adminroute from "./components/Adminroute";
+import DriverLogin from "./pages/Driver/driverLogin";
 
 import "./App.css";
 
@@ -164,6 +165,7 @@ function App() {
             </RoleRoute>
           }
         />
+        <Route path="/driver/login" element={<DriverLogin />} />
 
         {/* ADMIN ROUTES */}
         <Route element={<Adminroute />}>
